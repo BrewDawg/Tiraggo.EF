@@ -14,7 +14,7 @@ Full Intellisense Support
 EmployeeQuery q = new EmployeeQuery("e");
 EmployeeQuery q1 = new EmployeeQuery("e1");
 
-q.Select(q.EmployeeID, q.LastName)
+q.Select(q.EmployeeID, q.LastName)  // To bind to combobox
 	.Where(q.LastName.Like("%a%"))
 	.InnerJoin(q1).On(q.EmployeeID == q1.ReportsTo)
 	.OrderBy(q.LastName.Descending);
