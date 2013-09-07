@@ -46,4 +46,3 @@ ORDER BY
 Compare that to a Entity Framwork query which does the same thing and you'll be shocked.
 
 Requires a single .NET assembly. NuGet package on the way ...
-
