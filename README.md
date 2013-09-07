@@ -1,4 +1,4 @@
-#The Tiraggo Dynamic Query API for the Entity Framework#
+#Tiraggo Query API for the Entity Framework#
 
 By: Mike Griffin (http://www.tiraggo.com)
 
