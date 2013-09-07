@@ -8,6 +8,7 @@ License: [MIT](http://www.opensource.org/licenses/mit-license.php)
 Tired of writing complex, unintuitive Linq and Lambda expressions? Why not tap into your already well honed SQL experience and write intuitive queries. Now you can have the best of both worlds, the Tiraggo Dynamic Query API which will load your Entity Framework entities.
 
 ##Intuitive and Familiar SQL API##
+Full Intellisense Support
 ```csharp
 
 EmployeeQuery q = new EmployeeQuery("e");
