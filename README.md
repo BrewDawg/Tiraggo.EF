@@ -1,11 +1,12 @@
-#Tiraggo Query API for the Entity Framework#
+#Tiraggo.EF#
+##The Tiraggo Dynamic Query API for the Entity Framework##
 
 By: Mike Griffin (http://www.tiraggo.com)
 
 License: [MIT](http://www.opensource.org/licenses/mit-license.php)
 
 ##Tired of LINQ and Lamba?##
-Tired of writing complex, unintuitive Linq and Lambda expressions? Why not tap into your already well honed SQL experience and write intuitive queries. Now you can have the best of both worlds, the Tiraggo Dynamic Query API which will load your Entity Framework entities.
+Tired of writing complex, unintuitive Linq and Lambda expressions? Why not tap into your knowledge of writing SQL queries. Now you can have the best of both worlds, the Tiraggo Dynamic Query API and your Entity Framework entities.
 
 ##Intuitive and Familiar SQL API##
 Full Intellisense Support
@@ -46,3 +47,5 @@ ORDER BY
 ```
 
 Compare that to a Entity Framwork query which does the same thing and you'll be shocked.
+
+Requires a single .NET assembly. NuGet package on the way ...
