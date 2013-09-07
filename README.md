@@ -24,7 +24,6 @@ using(NorthwindEntities context = new NorthwindEntities())
 {
 	IList<Employee> employees = q.ToList<Employee>(context);
 }
-	
 ```
 
 Yep, you can actually only select the columns you desire and the SQL is extremely lean.
@@ -42,7 +41,6 @@ WHERE
    e.[LastName] LIKE @LastName1 
 ORDER BY
    e.[LastName] DESC
-	
 ```
 
 Compare that to a Entity Framwork query which does the same thing and you'll be shocked.
