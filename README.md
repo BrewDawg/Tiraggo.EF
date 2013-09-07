@@ -36,9 +36,8 @@ SELECT
    e.[LastName]  
 FROM
    [Employees] e 
-INNER JOIN
-   [Employees] e1 
-      ON e.[EmployeeID] = e1.[ReportsTo] 
+INNER JOIN [Employees] e1 
+   ON e.[EmployeeID] = e1.[ReportsTo] 
 WHERE
    e.[LastName] LIKE @LastName1 
 ORDER BY
