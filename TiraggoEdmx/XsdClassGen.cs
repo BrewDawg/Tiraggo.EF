@@ -621,7 +621,7 @@ namespace TiraggoEdmx
 
         private string storeGeneratedPatternField;
 
-        private byte maxLengthField;
+        private long maxLengthField;
 
         private bool maxLengthFieldSpecified;
 
@@ -697,7 +697,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte MaxLength
+        public long MaxLength
         {
             get
             {
@@ -1738,7 +1738,7 @@ namespace TiraggoEdmx
 
         private bool precisionFieldSpecified;
 
-        private byte scaleField;
+        private int scaleField;
 
         private bool scaleFieldSpecified;
 
@@ -1912,7 +1912,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte Scale
+        public int Scale
         {
             get
             {
