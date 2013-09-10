@@ -1,0 +1,29 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ assembly name="TiraggoEdmx" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Xml.Serialization" #>
+<#@ import namespace="TiraggoEdmx" #>
+<#
+    //===============================================================
+    //  NOTE: "TiraggoEdmx.dll" must be registered in the GAC
+    //===============================================================
+    string path = System.IO.Path.GetDirectoryName(Host.TemplateFile);
+
+    string inputFile = @"Northwind.edmx";
+    string inputPath = path + "\\" + @"Northwind.edmx";
+
+    Edmx edm = Edmx.Load(inputPath);
+
+    MetadataLoader loader = new MetadataLoader(this);
+
+    EdmItemCollection itemCollection = loader.CreateEdmItemCollection(inputFile);
+
+    // Now that I have all the data at my fingertips I can create the DynamicQuery class
+    // for each entity
+    foreach (EntityType entity in itemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+    {
+        TiraggoEntityInfo info = new TiraggoEntityInfo(edm, entity.FullName);
+        int i = 9;
+    }
+#>
