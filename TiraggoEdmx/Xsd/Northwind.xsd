@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" />
+    <xs:import namespace="http://schemas.microsoft.com/ado/2009/11/edm" />
+    <xs:import namespace="http://schemas.microsoft.com/ado/2009/11/mapping/cs" />
+    <xs:element name="Edmx">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Runtime">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="StorageModels">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element xmlns:q1="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" ref="q1:Schema" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ConceptualModels">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element xmlns:q2="http://schemas.microsoft.com/ado/2009/11/edm" ref="q2:Schema" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Mappings">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element xmlns:q3="http://schemas.microsoft.com/ado/2009/11/mapping/cs" ref="q3:Mapping" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Designer">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Connection">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="DesignerInfoPropertySet">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="DesignerProperty">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="Name" type="xs:string" use="required" />
+                                                            <xs:attribute name="Value" type="xs:string" use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Options">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="DesignerInfoPropertySet">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element maxOccurs="unbounded" name="DesignerProperty">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="Name" type="xs:string" use="required" />
+                                                            <xs:attribute name="Value" type="xs:string" use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Diagrams" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Version" type="xs:decimal" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
