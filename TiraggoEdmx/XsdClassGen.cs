@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.IO;
+using System.Xml.Serialization;
 namespace TiraggoEdmx
 {
 
@@ -21,6 +23,19 @@ namespace TiraggoEdmx
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://schemas.microsoft.com/ado/2009/11/edmx", IsNullable = false)]
     public partial class Edmx
     {
+        static public Edmx Load(string fullPathToEdmx)
+        {
+            Edmx edm = null;
+
+            using (TextReader rdr = new StreamReader(fullPathToEdmx))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Edmx));
+                edm = (Edmx)serializer.Deserialize(rdr);
+                rdr.Close();
+            }
+
+            return edm;
+        }
 
         private EdmxRuntime runtimeField;
 

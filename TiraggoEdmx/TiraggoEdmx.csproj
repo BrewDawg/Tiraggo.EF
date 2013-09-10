@@ -50,6 +50,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schema.Serialization.cs" />
     <Compile Include="Schema1.Serialization.cs" />
+    <Compile Include="TiraggoEntityInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="XsdClassGen.cs" />
   </ItemGroup>
   <ItemGroup>
