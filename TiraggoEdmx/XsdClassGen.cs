@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcApplication1
+namespace TiraggoEdmx
 {
 
 

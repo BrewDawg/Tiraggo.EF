@@ -11,7 +11,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace MvcApplication1
+namespace TiraggoEdmx
 {
 	public partial class Edmx
 	{
