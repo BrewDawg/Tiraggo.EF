@@ -13,8 +13,8 @@
     //===============================================================
     string path = System.IO.Path.GetDirectoryName(Host.TemplateFile);
 
-    string inputFile = @"Northwind.edmx";
-    string inputPath = path + "\\" + @"Northwind.edmx";
+    string inputFile = @"My2ndGeneration.edmx";
+    string inputPath = path + "\\" + @"My2ndGeneration.edmx";
 
     Edmx edmx = Edmx.Load(inputPath);
 
@@ -37,13 +37,64 @@ using Tiraggo.DynamicQuery;
 
 <#
         BeginNamespace(code);
+        var className = entity.Name + "Query";
 #>
     [DebuggerDisplay("Query = {Parse()}")]
     [Serializable]
-    public class <#=entity.Name + "Query"#> : tgDynamicQuerySerializable
+    public class <#=className#> : tgDynamicQuerySerializable
     {
+        public <#=className#>()
+        {
+            metadata = Metadata.Create();
+        }
 
+        public <#=className#>(string alias)
+            : base(alias)
+        {
+            metadata = Metadata.Create();
+        }
 
+        #region tgQueryItems
+
+<#
+        foreach(EdmProperty prop in entity.Properties)      
+        {
+#>
+        public tgQueryItem <#=prop.Name#>
+        {
+            get { return new tgQueryItem(this, Metadata.ColumnNames.<#=prop.Name#>, tgSystemType.<#=info.ColumnCLRMetadata[prop.Name].Type#>); }
+        }
+
+<#
+        }
+#>
+        #endregion
+
+        public class Metadata : tgMetadata
+        {
+            private Metadata() { }
+
+            static public Metadata Create()
+            {
+                Metadata meta = new Metadata();
+
+                return meta;
+            }
+
+            #region ColumnNames
+            public class ColumnNames
+            {
+<#
+        foreach(EdmProperty prop in entity.Properties)      
+        {
+#>
+                public const string <#=prop.Name#> = "<#=prop.Name#>";
+<#
+        }
+#>
+            }
+            #endregion
+        }
     }
 <#
         EndNamespace(code);
