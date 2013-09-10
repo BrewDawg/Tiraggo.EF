@@ -4,6 +4,9 @@
 <#@ import namespace="System.Data" #>
 <#@ import namespace="System.Xml.Serialization" #>
 <#@ import namespace="TiraggoEdmx" #>
+//========================================================
+// Tiraggo.EF Copyright © Mike Griffin 2013
+//========================================================
 <#
     //===============================================================
     //  NOTE: "TiraggoEdmx.dll" must be registered in the GAC
@@ -13,17 +16,60 @@
     string inputFile = @"Northwind.edmx";
     string inputPath = path + "\\" + @"Northwind.edmx";
 
-    Edmx edm = Edmx.Load(inputPath);
+    Edmx edmx = Edmx.Load(inputPath);
 
     MetadataLoader loader = new MetadataLoader(this);
-
+    var	fileManager = EntityFrameworkTemplateFileManager.Create(this);
+    var code = new CodeGenerationTools(this);
     EdmItemCollection itemCollection = loader.CreateEdmItemCollection(inputFile);
 
     // Now that I have all the data at my fingertips I can create the DynamicQuery class
     // for each entity
     foreach (EntityType entity in itemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
     {
-        TiraggoEntityInfo info = new TiraggoEntityInfo(edm, entity.FullName);
-        int i = 9;
+        TiraggoEntityInfo info = new TiraggoEntityInfo(edmx, entity.FullName);
+
+        fileManager.StartNewFile(entity.Name + "Query.cs");
+#>
+using System;
+using System.Diagnostics;
+using Tiraggo.DynamicQuery;
+
+<#
+        BeginNamespace(code);
+#>
+    [DebuggerDisplay("Query = {Parse()}")]
+    [Serializable]
+    public class <#=entity.Name + "Query"#> : tgDynamicQuerySerializable
+    {
+
+
     }
+<#
+        EndNamespace(code);
+    }
+    fileManager.Process();
+#>
+<#+
+public void BeginNamespace(CodeGenerationTools code)
+{
+    var codeNamespace = code.VsNamespaceSuggestion();
+    if (!String.IsNullOrEmpty(codeNamespace))
+    {
+#>
+namespace <#=code.EscapeNamespace(codeNamespace) + ".Query"#>
+{
+<#+
+    }
+}
+
+public void EndNamespace(CodeGenerationTools code)
+{
+    if (!String.IsNullOrEmpty(code.VsNamespaceSuggestion()))
+    {
+#>
+}
+<#+
+    }
+}
 #>
