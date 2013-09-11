@@ -98,8 +98,35 @@ using Tiraggo.DynamicQuery;
 #>
                 c = new tgColumnMetadata(ColumnNames.<#=prop.Name#>, <#=ordinal++.ToString()#>, typeof(System.<#=info.ColumnCLR[prop.Name].Type#>), tgSystemType.<#=Get_tgSystemType(info.ColumnCLR[prop.Name].Type)#>);
                 c.PropertyName = PropertyNames.<#=prop.Name#>;
+<#
+            if(info.IsInPrimaryKey(prop.Name))
+            {
+#>
                 c.IsInPrimaryKey = true;
-                c.NumericPrecision = 10;
+<#
+            }
+
+            if(info.ColumnCLR[prop.Name].Precision > 0)
+            {
+#>
+                c.NumericPrecision = <#=info.ColumnCLR[prop.Name].Precision#>;
+<#
+            }
+
+            if(info.ColumnCLR[prop.Name].Scale > 0)
+            {
+#>
+                c.NumericScale = <#=info.ColumnCLR[prop.Name].Scale#>;
+<#
+            }
+
+            if(!string.IsNullOrWhiteSpace(info.ColumnCLR[prop.Name].MaxLength))
+            {
+#>
+                c.CharacterMaxLength = <#=GetMaxLength(info.ColumnCLR[prop.Name].MaxLength)#>;
+<#
+            }
+#>
                 meta.Columns.Add(c);
 
 <#
@@ -175,5 +202,13 @@ public void EndNamespace(CodeGenerationTools code)
 public string Get_tgSystemType(string type)
 {
     return type.Replace("[]", "Array");
+}
+#>
+<#+ 
+public ulong GetMaxLength(string length)
+{
+    if(string.IsNullOrWhiteSpace(length)) return 0;
+
+    return Convert.ToUInt64(length);
 }
 #>
