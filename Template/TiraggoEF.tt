@@ -1,22 +1,59 @@
 ﻿<#@ template language="C#" debug="true" hostspecific="true"#>
 <#@ include file="EF.Utility.CS.ttinclude"#>
-<#@ assembly name="TiraggoEdmx" #>
+<#@ assembly name="$(ProjectDir)TiraggoEdmx\TiraggoEdmx.EF.dll" #>
 <#@ import namespace="System.Data" #>
 <#@ import namespace="System.Xml.Serialization" #>
 <#@ import namespace="TiraggoEdmx" #>
-//========================================================
-// Tiraggo.EF Copyright © Mike Griffin 2013
-//========================================================
+/*
+========================================================
+Tiraggo.EF Copyright © Mike Griffin 2013
+========================================================
+
+See : https://github.com/BrewDawg/Tiraggo.EF
+
+** NOTE **
+1) Place the "TiraggoEF.tt" template in your Models folder
+2) Be sure to rename the .edmx file in the "TiraggoEF.tt" template to match your .edmx file
+
+Sample:
+
+EmployeeQuery q = new EmployeeQuery("e");
+EmployeeQuery q1 = new EmployeeQuery("e1");
+
+q.Select(q.EmployeeID, q.LastName)
+    .Where(q.LastName.Like("%a%"))
+    .InnerJoin(q1).On(q.EmployeeID == q1.ReportsTo)
+    .OrderBy(q.LastName.Descending);
+
+
+using (NorthwindEntities context = new NorthwindEntities())
+{
+    IList<MyEmployee> employees = q.ToList<MyEmployee>(context);
+}
+
+========================================================
+*/
 <#
-    //===============================================================
-    //  NOTE: "TiraggoEdmx.dll" must be registered in the GAC
-    //===============================================================
     string path = System.IO.Path.GetDirectoryName(Host.TemplateFile);
+	
+	// ******************************************
+	// *** CHANGE THIS TO YOUR EDMX FILE NAME ***
+	// ******************************************
+	string edxmFileName = @"Model1.edmx";
 
-    string inputFile = @"My2ndGeneration.edmx";
-    string inputPath = path + "\\" + @"My2ndGeneration.edmx";
+    string inputFile = edxmFileName;
+    string inputPath = path + "\\" + edxmFileName;
 
-    Edmx edmx = Edmx.Load(inputPath);
+    Edmx edmx = null;
+
+    try
+    {
+        edmx = Edmx.Load(inputPath);
+    }
+    catch
+    {
+        return "// The " + edxmFileName + " was not found. You must change this in the Models\\TiraggoEF.tt file.";
+    }
 
     MetadataLoader loader = new MetadataLoader(this);
     var	fileManager = EntityFrameworkTemplateFileManager.Create(this);
