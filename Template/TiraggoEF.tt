@@ -62,7 +62,7 @@ using Tiraggo.DynamicQuery;
 #>
         public tgQueryItem <#=prop.Name#>
         {
-            get { return new tgQueryItem(this, Metadata.ColumnNames.<#=prop.Name#>, tgSystemType.<#=info.ColumnCLRMetadata[prop.Name].Type#>); }
+            get { return new tgQueryItem(this, Metadata.ColumnNames.<#=prop.Name#>, tgSystemType.<#=Get_tgSystemType(info.ColumnCLR[prop.Name].Type)#>); }
         }
 
 <#
@@ -78,11 +78,58 @@ using Tiraggo.DynamicQuery;
             {
                 Metadata meta = new Metadata();
 
+<#
+        foreach(EdmProperty prop in entity.Properties)      
+        {
+            string physicalName = info.ColumnMappings[prop.Name];
+#>
+                meta.Types[ColumnNames.<#=prop.Name#>] = new tgTypeMap("<#=info.ColumnSQL[physicalName].Type#>", "System.<#=info.ColumnCLR[prop.Name].Type#>");
+<#
+        }
+#>
+
+                tgColumnMetadata c;
+
+<#
+        int ordinal = 0;
+        foreach(EdmProperty prop in entity.Properties)      
+        {
+            string physicalName = info.ColumnMappings[prop.Name];
+#>
+                c = new tgColumnMetadata(ColumnNames.<#=prop.Name#>, <#=ordinal++.ToString()#>, typeof(System.<#=info.ColumnCLR[prop.Name].Type#>), tgSystemType.<#=Get_tgSystemType(info.ColumnCLR[prop.Name].Type)#>);
+                c.PropertyName = PropertyNames.<#=prop.Name#>;
+                c.IsInPrimaryKey = true;
+                c.NumericPrecision = 10;
+                meta.Columns.Add(c);
+
+<#
+        }
+#>
+
+                meta.Source = "<#=info.StorageInfo.Name#>";
+                meta.Destination = "<#=info.StorageInfo.Name#>";
+                meta.Schema = "<#=info.StorageInfo.Schema#>";
+
                 return meta;
             }
 
             #region ColumnNames
             public class ColumnNames
+            {
+<#
+        foreach(EdmProperty prop in entity.Properties)      
+        {
+            string physicalName = info.ColumnMappings[prop.Name];
+#>
+                public const string <#=prop.Name#> = "<#=info.ColumnSQL[physicalName].Name#>";
+<#
+        }
+#>
+            }
+            #endregion
+
+            #region PropertyNames
+            public class PropertyNames
             {
 <#
         foreach(EdmProperty prop in entity.Properties)      
@@ -122,5 +169,11 @@ public void EndNamespace(CodeGenerationTools code)
 }
 <#+
     }
+}
+#>
+<#+ 
+public string Get_tgSystemType(string type)
+{
+    return type.Replace("[]", "Array");
 }
 #>
