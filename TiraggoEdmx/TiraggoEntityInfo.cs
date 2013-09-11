@@ -24,28 +24,28 @@ namespace TiraggoEdmx
                 .Where(s => s.Name == Mapping.EntityTypeMapping.MappingFragment.StoreEntitySet).Single();
 
             ConceptualModel = edmx.Runtime.ConceptualModels.Schema.Items
-                .Where(c => c is SchemaEntityType2).Select(c => c as SchemaEntityType2).ToList<SchemaEntityType2>()
+                .Where(c => c is ConceptualModel).Select(c => c as ConceptualModel).ToList<ConceptualModel>()
                 .Where(c => c.Name == conceptualName).Single();
 
             ColumnMappings = Mapping.EntityTypeMapping.MappingFragment.ScalarProperty.ToDictionary(p => p.Name, p => p.ColumnName);
 
-            ColumnCLRMetadata = ConceptualModel.Property.ToDictionary(p => p.Name, p => p);
+            ColumnCLR = ConceptualModel.Property.ToDictionary(p => p.Name, p => p);
 
             SchemaEntityType sql = edm.Runtime.StorageModels.Schema.EntityType.Where(e => e.Name == Mapping.EntityTypeMapping.MappingFragment.StoreEntitySet).Single();
 
-            ColumnSQLMetadata = sql.Property.ToDictionary(e => e.Name, e => e);
+            ColumnSQL = sql.Property.ToDictionary(e => e.Name, e => e);
         }
 
-        public MappingEntityContainerMappingEntitySetMapping Mapping { get; set; }
+        public ColumnMapping Mapping { get; set; }
 
-        public SchemaEntityContainerEntitySet StorageInfo { get; set; }
+        public StorageInfo StorageInfo { get; set; }
 
-        public SchemaEntityType2 ConceptualModel { get; set; }
+        public ConceptualModel ConceptualModel { get; set; }
 
         public Dictionary<string, string> ColumnMappings { get; set; }
 
-        public Dictionary<string, SchemaEntityTypeProperty1> ColumnCLRMetadata { get; set; }
+        public Dictionary<string, ColumnCLR> ColumnCLR { get; set; }
 
-        public Dictionary<string, SchemaEntityTypeProperty> ColumnSQLMetadata { get; set; }
+        public Dictionary<string, ColumnSQL> ColumnSQL { get; set; }
     }
 }

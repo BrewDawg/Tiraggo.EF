@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Xml.Serialization;
 namespace TiraggoEdmx
@@ -295,7 +296,7 @@ namespace TiraggoEdmx
     public partial class SchemaEntityContainer
     {
 
-        private SchemaEntityContainerEntitySet[] entitySetField;
+        private StorageInfo[] entitySetField;
 
         private SchemaEntityContainerAssociationSet[] associationSetField;
 
@@ -303,7 +304,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntitySet")]
-        public SchemaEntityContainerEntitySet[] EntitySet
+        public StorageInfo[] EntitySet
         {
             get
             {
@@ -350,7 +351,7 @@ namespace TiraggoEdmx
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/11/edm/ssdl")]
-    public partial class SchemaEntityContainerEntitySet
+    public partial class StorageInfo
     {
 
         private string nameField;
@@ -529,7 +530,7 @@ namespace TiraggoEdmx
 
         private SchemaEntityTypePropertyRef[] keyField;
 
-        private SchemaEntityTypeProperty[] propertyField;
+        private ColumnSQL[] propertyField;
 
         private string nameField;
 
@@ -549,7 +550,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Property")]
-        public SchemaEntityTypeProperty[] Property
+        public ColumnSQL[] Property
         {
             get
             {
@@ -608,7 +609,7 @@ namespace TiraggoEdmx
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/11/edm/ssdl")]
-    public partial class SchemaEntityTypeProperty
+    public partial class ColumnSQL
     {
 
         private string nameField;
@@ -1059,7 +1060,7 @@ namespace TiraggoEdmx
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Association", typeof(SchemaAssociation1))]
         [System.Xml.Serialization.XmlElementAttribute("EntityContainer", typeof(SchemaEntityContainer1))]
-        [System.Xml.Serialization.XmlElementAttribute("EntityType", typeof(SchemaEntityType2))]
+        [System.Xml.Serialization.XmlElementAttribute("EntityType", typeof(ConceptualModel))]
         public object[] Items
         {
             get
@@ -1611,12 +1612,12 @@ namespace TiraggoEdmx
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/11/edm")]
-    public partial class SchemaEntityType2
+    public partial class ConceptualModel
     {
 
         private SchemaEntityTypePropertyRef1[] keyField;
 
-        private SchemaEntityTypeProperty1[] propertyField;
+        private ColumnCLR[] propertyField;
 
         private SchemaEntityTypeNavigationProperty[] navigationPropertyField;
 
@@ -1638,7 +1639,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Property")]
-        public SchemaEntityTypeProperty1[] Property
+        public ColumnCLR[] Property
         {
             get
             {
@@ -1711,7 +1712,7 @@ namespace TiraggoEdmx
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/11/edm")]
-    public partial class SchemaEntityTypeProperty1
+    public partial class ColumnCLR
     {
 
         private string nameField;
@@ -1762,6 +1763,24 @@ namespace TiraggoEdmx
         {
             get
             {
+                if (this.typeField == "Binary")
+                {
+                    this.typeField = "Byte";
+
+                    try
+                    {
+                        if (!String.IsNullOrWhiteSpace(this.MaxLength) && 
+                            (this.MaxLength == "Max" || ulong.Parse(this.MaxLength) > 1))
+                        {
+                            this.typeField += "[]";
+                        }
+                    }
+                    catch
+                    {
+                        return "FAILED";
+                    }
+                }
+
                 return this.typeField;
             }
             set
@@ -2089,7 +2108,7 @@ namespace TiraggoEdmx
     public partial class MappingEntityContainerMapping
     {
 
-        private MappingEntityContainerMappingEntitySetMapping[] entitySetMappingField;
+        private ColumnMapping[] entitySetMappingField;
 
         private string storageEntityContainerField;
 
@@ -2097,7 +2116,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntitySetMapping")]
-        public MappingEntityContainerMappingEntitySetMapping[] EntitySetMapping
+        public ColumnMapping[] EntitySetMapping
         {
             get
             {
@@ -2144,7 +2163,7 @@ namespace TiraggoEdmx
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/11/mapping/cs")]
-    public partial class MappingEntityContainerMappingEntitySetMapping
+    public partial class ColumnMapping
     {
 
         private MappingEntityContainerMappingEntitySetMappingEntityTypeMapping entityTypeMappingField;
