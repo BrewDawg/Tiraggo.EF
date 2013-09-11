@@ -1769,8 +1769,7 @@ namespace TiraggoEdmx
 
                     try
                     {
-                        if (!String.IsNullOrWhiteSpace(this.MaxLength) && 
-                            (this.MaxLength == "Max" || ulong.Parse(this.MaxLength) > 1))
+                        if (!String.IsNullOrWhiteSpace(this.MaxLength) && ulong.Parse(this.MaxLength) > 1)
                         {
                             this.typeField += "[]";
                         }
@@ -1837,6 +1836,11 @@ namespace TiraggoEdmx
         {
             get
             {
+                if (!String.IsNullOrWhiteSpace(this.maxLengthField) && this.maxLengthField.ToLower() == "max")
+                {
+                    return "2147483647";
+                }
+
                 return this.maxLengthField;
             }
             set
