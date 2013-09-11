@@ -559,6 +559,10 @@ namespace Tiraggo.DynamicQuery
         /// </summary>
         Byte,
         /// <summary>
+        /// System.Byte
+        /// </summary>
+        Binary,
+        /// <summary>
         /// System.Char
         /// </summary>
         Char,
