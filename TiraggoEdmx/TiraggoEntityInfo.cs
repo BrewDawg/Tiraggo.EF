@@ -34,18 +34,31 @@ namespace TiraggoEdmx
             SchemaEntityType sql = edm.Runtime.StorageModels.Schema.EntityType.Where(e => e.Name == Mapping.EntityTypeMapping.MappingFragment.StoreEntitySet).Single();
 
             ColumnSQL = sql.Property.ToDictionary(e => e.Name, e => e);
+
+            PrimaryKeys = new Dictionary<string, string>();
+            foreach (KeyColumn key in ConceptualModel.Key)
+            {
+                PrimaryKeys[key.Name] = key.Name;
+            }
         }
 
-        public ColumnMapping Mapping { get; set; }
+        public ColumnMapping Mapping { get; internal set; }
 
-        public StorageInfo StorageInfo { get; set; }
+        public StorageInfo StorageInfo { get; internal set; }
 
-        public ConceptualModel ConceptualModel { get; set; }
+        public ConceptualModel ConceptualModel { get; internal set; }
 
-        public Dictionary<string, string> ColumnMappings { get; set; }
+        public bool IsInPrimaryKey(string property)
+        {
+            return PrimaryKeys.ContainsKey(property);
+        }
 
-        public Dictionary<string, ColumnCLR> ColumnCLR { get; set; }
+        public Dictionary<string, string> ColumnMappings { get; internal set; }
 
-        public Dictionary<string, ColumnSQL> ColumnSQL { get; set; }
+        public Dictionary<string, ColumnCLR> ColumnCLR { get; internal set; }
+
+        public Dictionary<string, ColumnSQL> ColumnSQL { get; internal set; }
+
+        public Dictionary<string, string> PrimaryKeys { get; internal set; }
     }
 }

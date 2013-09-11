@@ -1615,7 +1615,7 @@ namespace TiraggoEdmx
     public partial class ConceptualModel
     {
 
-        private SchemaEntityTypePropertyRef1[] keyField;
+        private KeyColumn[] keyField;
 
         private ColumnCLR[] propertyField;
 
@@ -1625,7 +1625,7 @@ namespace TiraggoEdmx
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("PropertyRef", IsNullable = false)]
-        public SchemaEntityTypePropertyRef1[] Key
+        public KeyColumn[] Key
         {
             get
             {
@@ -1686,7 +1686,7 @@ namespace TiraggoEdmx
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/11/edm")]
-    public partial class SchemaEntityTypePropertyRef1
+    public partial class KeyColumn
     {
 
         private string nameField;
