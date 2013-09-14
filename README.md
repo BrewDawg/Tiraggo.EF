@@ -23,9 +23,9 @@ string edxmFileName = @"MyModel.edmx";
 
 A reference to "Tiraggo.DynamicQuery.EF.dll" will also be added to your solution. This is the only assembly your application will need to use Tiraggo.EF at runtime.
 
-There is a "TiraggoEdmx.EF.dll" added to a folder in your project named "TiraggoEdmx", this is used by the T4 templates and you do not need to ship this assembly. It provides the low level metadata that Microsoft EDMX API refuses to server up, like the mappings between your conceptual model and the storage model including low level, primitive information like the SQL Server columns types (nvarchar) and a alike. I am making some enhancements in the assmebly and will release this as a NuGet package on it's own, it's a far superior way to write T4 templates againts EDMX files, everything it fully exposed.
+There is a "TiraggoEdmx.EF.dll" added to a folder in your project named "TiraggoEdmx", this is used by the T4 templates and you do not need to ship this assembly. It provides the low level metadata that Microsoft EDMX API refuses to serve up. For example, the mappings between your conceptual model and the storage model including low level, primitive information like the SQL Server columns types (nvarchar) and a alike. I am making some enhancements in the assembly and will release this as a separate NuGet package on it's own. TiraggoEdmx.EF is a far superior way to write T4 templates against EDMX files, everything it fully exposed.
 
-You can see a sample of it [HERE](https://github.com/BrewDawg/Tiraggo.EF/blob/master/TiraggoEdmx/TiraggoEntityInfo_v3.cs). Again, I am making big improvements to this and will release in about two weeks.
+You can see a sample of it [HERE](https://github.com/BrewDawg/Tiraggo.EF/blob/master/TiraggoEdmx/TiraggoEntityInfo_v3.cs). Again, I am making big improvements to this and will release in about two weeks so wait for that release if you're interested.
 
 ##Intuitive and Familiar SQL API##
 Full Intellisense Support
