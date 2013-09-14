@@ -160,6 +160,30 @@ OFFSET 40 ROWS
 FETCH NEXT 20 ROWS ONLY
 ```
 
+###Full Expressions in OrderBy and GroupBy###
+
+This query doesn’t really make sense, but we wanted to show you what will be possible in the next release.
+
+```csharp
+EmployeesQuery q = new EmployeesQuery(); 
+q.Select(q.LastName.Substring(2, 4).ToLower()); 
+q.OrderBy(q.LastName.Substring(2, 4).ToLower().Descending); 
+q.GroupBy(q.LastName.Substring(2, 4).ToLower());
+
+using (MyEntities context = new MyEntities())
+{
+	IList<ErrorLog> errors = q.ToList<ErrorLog>(context);
+}
+```
+
+Results:
+```sql
+SELECT SUBSTRING(LOWER([LastName]),2,4) AS 'LastName' 
+FROM [Employees] 
+GROUP BY SUBSTRING(LOWER([LastName]),2,4) 
+ORDER BY SUBSTRING(LOWER([LastName]),2,4) DESC
+```
+
 ###Select SubQuery###
 
 A SubQuery in a Select clause must return a single value.
