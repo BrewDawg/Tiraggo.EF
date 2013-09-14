@@ -102,6 +102,64 @@ SELECT [EmployeeID],[LastName],[FirstName],[Supervisor],[Age]  -- not [Photo]
 FROM [dbo].[Employee]
 ```
 
+###Paging###
+
+Using PageSize and PageNumber. This is the traditional way of paging and works on all versions of SQL Server. You always need an OrderBy when sorting.
+```csharp
+ErrorLogQuery q = new ErrorLogQuery();
+q.Select(q.ErrorLogId, q.Method, q.Message);
+q.OrderBy(q.DateOccurred.Descending);
+q.tg.PageNumber = 2;
+q.tg.PageSize = 20;
+
+using (MyEntities context = new MyEntities())
+{
+	IList<ErrorLog> errors = q.ToList<ErrorLog>(context);
+}
+```
+
+Results:
+```sql
+WITH [withStatement] AS 
+(
+	SELECT [errorlogid], 
+		[method], 
+		[message], 
+		Row_number() OVER
+		( 
+			ORDER BY [dateoccurred] DESC
+		) AS ESRN 
+	FROM [dbo].[errorlog]
+) 
+SELECT * 
+FROM [withStatement] 
+WHERE esrn BETWEEN 21 AND 40 
+ORDER BY esrn ASC 
+```
+
+Using Skip and Take for paging. Requires Microsoft SQL 2012 at a minimum.
+
+```csharp
+ErrorLogQuery q = new ErrorLogQuery();
+q.Select(q.ErrorLogId, q.Method, q.Message);
+q.OrderBy(q.DateOccurred.Descending);
+q.Skip(40).Take(20);
+
+using (MyEntities context = new MyEntities())
+{
+	IList<ErrorLog> errors = q.ToList<ErrorLog>(context);
+}
+```
+
+Results:
+```sql
+SELECT [ErrorLogId],[Method],[Message]  
+FROM [dbo].[ErrorLog] 
+ORDER BY [DateOccurred] DESC 
+OFFSET 40 ROWS 
+FETCH NEXT 20 ROWS ONLY
+```
+
 ###Select SubQuery###
 
 A SubQuery in a Select clause must return a single value.
