@@ -53,6 +53,7 @@ Use the native language syntax, it works as you expect it would.
 - /
 - %
 - >
+- <
 - <=
 - >=
 - =<
