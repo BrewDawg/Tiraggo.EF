@@ -33,10 +33,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>TiraggoEdmx.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,35 +49,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Edmx.Serialization.cs" />
-    <Compile Include="Mapping.Serialization.cs" />
+    <Compile Include="Edmx_v2\Edmx.Serialization.cs" />
+    <Compile Include="Edmx_v2\Mapping.Serialization.cs" />
+    <Compile Include="Edmx_v2\Schema.Serialization.cs" />
+    <Compile Include="Edmx_v2\Schema1.Serialization.cs" />
+    <Compile Include="Edmx_v2\XsdClassGen.cs" />
+    <Compile Include="Edmx_v3\Edmx.Serialization.cs" />
+    <Compile Include="Edmx_v3\Mapping.Serialization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schema.Serialization.cs" />
-    <Compile Include="Schema1.Serialization.cs" />
-    <Compile Include="TiraggoEntityInfo.cs">
+    <Compile Include="Edmx_v3\Schema.Serialization.cs" />
+    <Compile Include="Edmx_v3\Schema1.Serialization.cs" />
+    <Compile Include="TiraggoEntityInfo_v2.cs" />
+    <Compile Include="TiraggoEntityInfo_v3.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="XsdClassGen.cs" />
+    <Compile Include="Edmx_v3\XsdClassGen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TiraggoEdmx.pfx" />
     <None Include="XsdClassGen.tt" />
-    <None Include="Xsd\Northwind.xsd">
+    <None Include="Xsd_v2\NorthWindModel.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xsd\Northwind1.xsd">
+    <None Include="Xsd_v2\NorthWindModel1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xsd\Northwind2.xsd">
+    <None Include="Xsd_v2\NorthWindModel2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xsd\Northwind3.xsd">
+    <None Include="Xsd_v2\NorthWindModel3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xsd\Northwind4.xsd">
+    <None Include="Xsd_v2\NorthWindModel4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Xsd\Northwind5.xsd">
+    <None Include="Xsd_v2\NorthWindModel5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v3\Northwind.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v3\Northwind1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v3\Northwind2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v3\Northwind3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v3\Northwind4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v3\Northwind5.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

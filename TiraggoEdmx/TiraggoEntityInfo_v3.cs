@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using TiraggoEdmx;
+using TiraggoEdmx_v3;
 
 namespace TiraggoEdmx
 {
-    public class TiraggoEntityInfo
+    public partial class TiraggoEntityInfo_v3
     {
         private Edmx edmx;
 
-        public TiraggoEntityInfo(Edmx edm, string fullName)
+        public TiraggoEntityInfo_v3(Edmx edm, string fullName)
         {
             edmx = edm;
 
