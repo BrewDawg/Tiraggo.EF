@@ -30,9 +30,9 @@ using(MyEntities context = new MyEntities())
 }
 ```
 
-Yep, you can actually only select the columns you desire and the SQL is extremely lean. Tiraggo.EF Requires a single .NET assembly and no config settings.
+Yep, you can actually only select the columns you desire and the SQL is extremely lean. Tiraggo.EF only requires a single .NET assembly and no config settings.
 
-NOTE: InnerJoin is used above, also supported are RightJoin, LeftJoin, CrossJoin, and FullJoin.
+NOTE: <b>InnerJoin</b> is used above, also supported are <b>RightJoin</b>, <b>LeftJoin</b>, <b>CrossJoin</b>, and <b>FullJoin</b>.
 
 ```sql
 SELECT
