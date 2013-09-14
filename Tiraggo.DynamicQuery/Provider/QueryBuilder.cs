@@ -1157,9 +1157,9 @@ namespace Tiraggo.DynamicQuery
         }
 
         // This is used only to execute the Dynamic Query API
-        static public IList<T> ToList<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
+        static public List<T> ToList<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
         {
-            IList<T> list = new List<T>();
+            List<T> list = new List<T>();
 
             tgMetadata meta = query;
 
@@ -1188,11 +1188,96 @@ namespace Tiraggo.DynamicQuery
             }
             catch (Exception ex)
             {
-                int i = 9;
                 throw;
             }
 
             return list;
+        }
+
+        static public T[] ToArray<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
+        {
+            T[] array = null;
+
+            tgMetadata meta = query;
+
+            try
+            {
+                DataTable dataTable = new DataTable(meta.Destination);
+
+                using (SqlCommand cmd = PrepareCommand(query))
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        da.SelectCommand = cmd;
+
+                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
+                        {
+                            da.Fill(dataTable);
+                        }
+                    }
+                }
+
+                array = new T[dataTable.Rows.Count];
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    array[i] = CreatePocoObject<T>(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return array;
+        }
+
+        public static Dictionary<TKey, TSource> ToDictionary<TKey, TSource>(tgDynamicQuerySerializable query, DbContext context) where TSource : class, new()
+        {
+            Dictionary<TKey, TSource> hash = new Dictionary<TKey, TSource>();
+            tgColumnMetadata primaryKey;
+
+            tgMetadata meta = query;
+
+            if (meta.Columns.PrimaryKeys.Count != 1)
+            {
+                return hash;
+            }
+            else
+            {
+                primaryKey = meta.Columns.PrimaryKeys[0];
+            }
+
+            try
+            {
+                DataTable dataTable = new DataTable(meta.Destination);
+
+                using (SqlCommand cmd = PrepareCommand(query))
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        da.SelectCommand = cmd;
+
+                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
+                        {
+                            da.Fill(dataTable);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    hash[(TKey)row[primaryKey.Name]] = CreatePocoObject<TSource>(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return hash;
         }
 
         private static T CreatePocoObject<T>(DataRow dr) where T : class, new()

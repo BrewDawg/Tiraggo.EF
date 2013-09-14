@@ -1133,10 +1133,38 @@ namespace Tiraggo.DynamicQuery
         }
 
 
-        // This is used only to execute the Dynamic Query API
-        public IList<T> ToList<T>(DbContext context) where T : class, new()
+        /// <summary>
+        /// Returns the query results as a generic list of type T
+        /// </summary>
+        /// <typeparam name="T">The POCO class type</typeparam>
+        /// <param name="context">The Entity Framework DbContext</param>
+        /// <returns>The query results as a generic list of type T</returns>
+        public List<T> ToList<T>(DbContext context) where T : class, new()
         {
             return QueryBuilder.ToList<T>(this, context);
+        }
+
+        /// <summary>
+        ///  Returns the query results as an array of type T
+        /// </summary>
+        /// <typeparam name="T">The POCO class type</typeparam>
+        /// <param name="context">The Entity Framework DbContext</param>
+        /// <returns>The query results as an array of type T</returns>
+        public T[] ToArray<T>(DbContext context) where T : class, new()
+        {
+            return QueryBuilder.ToArray<T>(this, context);
+        }
+
+        /// <summary>
+        /// Creates a Dictionary where the key is the Primary key and the value is the POCO
+        /// </summary>
+        /// <typeparam name="TKey">The type of the Primary, for example, Guid or int</typeparam>
+        /// <typeparam name="TSource">The POCO class type</typeparam>
+        /// <param name="context">The Entity Framework DbContext</param>
+        /// <returns>The query results as an Dictionary</returns>
+        public Dictionary<TKey, TSource> ToDictionary<TKey, TSource>(DbContext context) where TSource : class, new()
+        {
+            return QueryBuilder.ToDictionary<TKey, TSource>(this, context);
         }
 
         #region Helper Routine
@@ -1212,7 +1240,7 @@ namespace Tiraggo.DynamicQuery
         }
         #endregion Helper Routine
 
-        #region es
+        #region tg
 
         /// <summary>
         /// This is to help hide some details from Intellisense.
