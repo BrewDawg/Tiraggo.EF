@@ -5,13 +5,13 @@ using System.Linq;
 using System.Web;
 using TiraggoEdmx_v3;
 
-namespace TiraggoEdmx
+namespace TiraggoEdmx_v3
 {
-    public partial class TiraggoEntityInfo_v3
+    public partial class TiraggoEntityInfo
     {
         private Edmx edmx;
 
-        public TiraggoEntityInfo_v3(Edmx edm, string fullName)
+        public TiraggoEntityInfo(Edmx edm, string fullName)
         {
             edmx = edm;
 
