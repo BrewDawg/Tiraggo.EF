@@ -33,7 +33,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Dynamic;
 using System.Reflection;
+using Microsoft.CSharp.RuntimeBinder;
 
 namespace Tiraggo.DynamicQuery
 {
@@ -1194,6 +1196,43 @@ namespace Tiraggo.DynamicQuery
             return list;
         }
 
+        static public List<dynamic> ToAnonymousType(tgDynamicQuerySerializable query, DbContext context)
+        {
+            List<dynamic> list = new List<dynamic>();
+
+            tgMetadata meta = query;
+
+            try
+            {
+                DataTable dataTable = new DataTable(meta.Destination);
+
+                using (SqlCommand cmd = PrepareCommand(query))
+                {
+                    using (SqlDataAdapter da = new SqlDataAdapter())
+                    {
+                        da.SelectCommand = cmd;
+
+                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
+                        {
+                            da.Fill(dataTable);
+                        }
+                    }
+                }
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    list.Add(CreatePocoObject(row));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return list;
+        }
+
         static public T[] ToArray<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
         {
             T[] array = null;
@@ -1339,6 +1378,30 @@ namespace Tiraggo.DynamicQuery
             catch
             {
                 System.Diagnostics.Debug.Assert(false, "SetValuesToObject failed to create an object");
+            }
+
+            return null;
+        }
+
+        private static dynamic CreatePocoObject(DataRow dr)
+        {
+            dynamic o = new ExpandoObject();
+
+            try
+            {
+                DataColumnCollection columns = dr.Table.Columns;
+
+                foreach (DataColumn column in columns)
+                {
+                    IDictionary<string, object> myObject = o;
+                    myObject.Add(column.ColumnName, dr[column] == DBNull.Value ? null : dr[column]);
+                }
+
+                return o;
+            }
+            catch
+            {
+                System.Diagnostics.Debug.Assert(false, "static dynamic CreatePocoObject(DataRow dr)");
             }
 
             return null;

@@ -1145,6 +1145,16 @@ namespace Tiraggo.DynamicQuery
         }
 
         /// <summary>
+        /// This actually returns Dynamic data, use the new { } syntax, but there won't be intellisense
+        /// </summary>
+        /// <param name="context">The Entity Framework DbContext</param>
+        /// <returns></returns>
+        public List<dynamic> ToAnonymousType(DbContext context)
+        {
+            return QueryBuilder.ToAnonymousType(this, context);
+        }
+
+        /// <summary>
         ///  Returns the query results as an array of type T
         /// </summary>
         /// <typeparam name="T">The POCO class type</typeparam>
