@@ -722,6 +722,47 @@ eq1.Except(eq2);
 eq2.Where(eq2.FirstName == "Jim");
 ```
 
+###Raw SQL Injection Everywhere###
+
+There may be times when you need to access some SQL feature that is not supported by the DynamicQuery API. But, now having used and fallen in love with DynamicQuery, the last thing you want to do is stop and go write a stored procedure or create a view. We have always supported the raw injection feature in our Select statement, but it will soon be available almost everywhere. The way it works is you pass in raw SQL in the form of a string surrounded by < > angle brackets. That indicates that you want the raw SQL passed directly to the database engine “as is”.
+
+Here is an example query. You would never write a query like this in reality. EntitySpaces supports this simple query without having to use < > angle brackets. This is just to show all of the places that can accept the raw SQL injection technique:
+
+```csharp
+EmployeesQuery q = new EmployeesQuery();
+q.Select("<FirstName>", q.HireDate);
+q.Where("<EmployeeID = 1>");
+q.GroupBy("<FirstName>", q.HireDate);
+q.OrderBy("<FirstName ASC>"); 
+
+using(MyEntities context = new MyEntities())
+{
+	IList<Employee> employees = q.ToList<Employee>(context);
+}
+```
+
+The SQL Generated is as follows (and works)
+
+Results:
+```sql
+SELECT FirstName,[HireDate] AS 'HireDate'  
+FROM [Employees] WHERE (EmployeeID = 1) 
+GROUP BY FirstName,[HireDate] 
+ORDER BY FirstName ASC
+```
+
+Of course, you could easily write the above query without injection, but you get the idea. The escape hatch will be available to you almost everywhere ….
+
+```csharp
+EmployeesQuery q = new EmployeesQuery();
+q.Select(q.FirstName);
+q.Where(q.EmployeeID == 1);
+q.OrderBy(q.FirstName.Ascending);
+q.GroupBy(q.FirstName, q.HireDate);
+```
+
+Using the raw SQL injection techniques above will allow you to invoke SQL functions that we don’t support, including database vender specific SQL, and so on. Hopefully, you will almost never have to resort to writing a custom load method to invoke a stored procedure or an entirely hand written SQL statement. Of course, you can use our native API everywhere and just inject the raw SQL on the GroupBy for instance. You can mix and match to get the desired SQL.
+
 ##Some Final Thoughts##
 
 The examples given above were designed to demonstrate (and test) usage in a variety of settings. They are not necessarily the simplest, or most efficient, way to achieve the desired result set. Think of them as an API usage guide, not as design guidelines. Most SubQueries can be re-written as Joins, and most Joins can be re-written as SubQueries. If, while coding, you are having trouble conceptualizing one approach, then try the other.
