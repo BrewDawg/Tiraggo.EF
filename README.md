@@ -726,7 +726,7 @@ eq2.Where(eq2.FirstName == "Jim");
 
 There may be times when you need to access some SQL feature that is not supported by the DynamicQuery API. But, now having used and fallen in love with DynamicQuery, the last thing you want to do is stop and go write a stored procedure or create a view. We have always supported the raw injection feature in our Select statement, but it will soon be available almost everywhere. The way it works is you pass in raw SQL in the form of a string surrounded by < > angle brackets. That indicates that you want the raw SQL passed directly to the database engine “as is”.
 
-Here is an example query. You would never write a query like this in reality. EntitySpaces supports this simple query without having to use < > angle brackets. This is just to show all of the places that can accept the raw SQL injection technique:
+Here is an example query. You would never write a query like this in reality. Tiraggo supports this simple query without having to use < > angle brackets. This is just to show all of the places that can accept the raw SQL injection technique:
 
 ```csharp
 EmployeesQuery q = new EmployeesQuery();
