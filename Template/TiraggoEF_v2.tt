@@ -3,7 +3,7 @@
 <#@ assembly name="$(ProjectDir)TiraggoEdmx\TiraggoEdmx.EF.dll" #>
 <#@ import namespace="System.Data" #>
 <#@ import namespace="System.Xml.Serialization" #>
-<#@ import namespace="TiraggoEdmx" #>
+<#@ import namespace="TiraggoEdmx_v2" #>
 /*
 ========================================================
 Tiraggo.EF Copyright © Mike Griffin 2013
@@ -44,7 +44,7 @@ using (NorthwindEntities context = new NorthwindEntities())
     string inputFile = edxmFileName;
     string inputPath = path + "\\" + edxmFileName;
 
-    Edmx edmx = null;
+     Edmx edmx = null;
 
     try
     {
@@ -52,7 +52,7 @@ using (NorthwindEntities context = new NorthwindEntities())
     }
     catch
     {
-        return "// The " + edxmFileName + " was not found. You must change this in the Models\\TiraggoEF.tt file.";
+        return "// Either the " + edxmFileName + " was not found or it's not a V2 EDMX File. You must change this in the Models\\TiraggoEF_v2.tt file.";
     }
 
     MetadataLoader loader = new MetadataLoader(this);
