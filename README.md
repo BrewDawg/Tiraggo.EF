@@ -53,7 +53,7 @@ When you install the Tiraggo.EF NuGet package it will install two T4 templates i
 
 <B>Provide the name of your EDMX File</B>
 
-You will have to edit the T4 template and add the name of your EDMX file in both templates. 
+You will have to edit the two T4 templates and add the name of your EDMX file in both templates. 
 
 Like so:
 ```csharp
@@ -63,7 +63,7 @@ Like so:
 string edxmFileName = @"MyModel.edmx";
 ```
 
-Once you see which templates generates your code you can remove the other if you like.
+Once you see which template generates your code you can remove the other if you like.
 
 You can tell what version your EDMX files are by looking at them in XML format, the version is right at the top:
 
@@ -76,7 +76,7 @@ Notice below that the "TiraggoEF_v3.tt" template generated the Query class in my
 
 ![ScreenShot](http://www.brewdawg.com/TiraggoEF_Project.png)
 
-<b>Assemblies</b>
+<b>Tiraggo.EF Assemblies</b>
 
 A reference to "Tiraggo.DynamicQuery.EF.dll" will also be added to your solution. This is the only assembly your application will need to use Tiraggo.EF at runtime.
 
