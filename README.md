@@ -167,6 +167,7 @@ FETCH NEXT 20 ROWS ONLY
 ```csharp
 OrderQuery oq = new OrderQuery("o");
 OrderItemQuery oiq = new OrderItemQuery("oi");
+
 oq.Select(oq.CustID, oq.OrderDate, "<sub.OrderTotal>");
 oq.From
     (
@@ -848,3 +849,9 @@ using(MyEntities context = new MyEntities())
 	IList<Order> orders = oq.ToList<Order>(context);
 }
 ```
+
+##The rest of the Tiraggo Suite##
+
+[Tiraggo](https://github.com/BrewDawg/Tiraggo) - A C# Cross Platform ORM Architecture derived from EntitySpaces (Full Xamarin Mono Touch Support). Runs on Windows, iOS, and Android with projects for all three.
+
+[Tiraggo.js](https://github.com/BrewDawg/Tiraggo.js) - A JavaScript ORM to Compliment the Main Tiraggo Architecture
