@@ -3,7 +3,9 @@
 
 By: Mike Griffin (http://www.tiraggo.com)
 
-License: [MIT](http://www.opensource.org/licenses/mit-license.php)
+License: [MIT](https://raw.github.com/BrewDawg/Tiraggo.EF/master/License.txt)
+
+NuGet Package: [NuGet](https://www.nuget.org/profiles/Mike.Griffin/) install from within Visual Studio using the NuGet Package Manager.
 
 ##Tired of LINQ and Lamba?##
 Tired of writing complex, unintuitive Linq and Lambda expressions? Why not tap into your knowledge of writing SQL queries. Now you can have the best of both worlds, the Tiraggo Dynamic Query API and your Entity Framework entities.
@@ -25,7 +27,7 @@ using(MyEntities context = new MyEntities())
 }
 ```
 
-Yep, you can actually only select the columns you desire and the SQL is extremely lean. Requires a single .NET assembly. NuGet package on the way ...
+Yep, you can actually only select the columns you desire and the SQL is extremely lean. Requires a single .NET assembly. 
 
 ```sql
 SELECT
@@ -436,7 +438,7 @@ WHERE o.[OrderDate] IN
 
 ANY, ALL, and SOME are SubQuery qualifiers. They precede the SubQuery they apply to. For most databases, ANY and SOME are synonymous. Usually, if you use an operator (>, >=, =, <, <=) in a Where clause against a SubQuery, then the SubQuery must return a single value. By applying a qualifier to the SubQuery, you can use operators against SubQueries that return multiple results.
 
-Notice, below, that the ALL qualifier is set to true for the SubQuery with "cq.es.All = true;".
+Notice, below, that the ALL qualifier is set to true for the SubQuery with "cq.tg.All = true;".
 
 ```csharp
 // DateAdded for Customers whose Manager  = 3
@@ -469,7 +471,7 @@ WHERE o.[OrderDate] < ALL
 )
 ```
 
-Below, is a nested SubQuery. The ANY qualifier is set to true for the middle SubQuery with "cq.es.Any = true;".
+Below, is a nested SubQuery. The ANY qualifier is set to true for the middle SubQuery with "cq.tg.Any = true;".
 
 ```csharp
 // Employees whose LastName begins with 'S'.
@@ -610,7 +612,7 @@ ORDER BY [EmployeeID] DESC
 
 ###Union, Intersect, and Except###
 
-We have added the ability to perform these operations. The samples below are simple queries from our NUnit test suite.  These might be kind of silly but these tests are for merely validating the syntax.
+These might be kind of silly but they demonstrate syntax.
 
 Union
 ```csharp
@@ -649,7 +651,7 @@ eq2.Where(eq2.FirstName == "Jim");
 
 The examples given above were designed to demonstrate (and test) usage in a variety of settings. They are not necessarily the simplest, or most efficient, way to achieve the desired result set. Think of them as an API usage guide, not as design guidelines. Most SubQueries can be re-written as Joins, and most Joins can be re-written as SubQueries. If, while coding, you are having trouble conceptualizing one approach, then try the other.
 
-Technically, a JOIN's ON clause can take almost any where_condition, and EntitySpaces supports many of these, including SubQueries. But, we agree with most authorities on the subject, that the ON clause should be reserved for the conditions that relate the two tables. All other conditional statements should be placed in a WHERE clause. Typically, the ON clause only contains a column from each table and a comparison operator.
+Technically, a JOIN's ON clause can take almost any where_condition, and Tiraggo supports many of these, including SubQueries. But, I agree with most authorities on the subject, that the ON clause should be reserved for the conditions that relate the two tables. All other conditional statements should be placed in a WHERE clause. Typically, the ON clause only contains a column from each table and a comparison operator.
 
 For example, take the Join(query).On(SubQuery) example above. The much simpler query below returns the same result set. Its Where() clause not only simplifies the On() clause, but eliminates the SubQuery completely.
 
