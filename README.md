@@ -64,6 +64,8 @@ There is a "TiraggoEdmx.EF.dll" added to a folder in your project named "Tiraggo
 
 You can see a sample of it [HERE](https://github.com/BrewDawg/Tiraggo.EF/blob/master/TiraggoEdmx/TiraggoEntityInfo_v3.cs). Again, I am making big improvements to this and will release in about two weeks so wait for that release if you're interested.
 
+#Back to the Syntax#
+
 ##Supported Operators##
 Use the native language syntax, it works as you expect it would.
 - +
