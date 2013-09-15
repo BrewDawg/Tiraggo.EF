@@ -33,6 +33,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.EntityClient;
+using System.Data.Objects;
 using System.Data.SqlClient;
 using System.Dynamic;
 using System.Reflection;
@@ -1189,6 +1191,49 @@ namespace Tiraggo.DynamicQuery
             return dataTable;
         }
 
+        static private DataTable FillDataTable(tgDynamicQuerySerializable query, ObjectContext context)
+        {
+            tgMetadata meta = query;
+
+            DataTable dataTable = new DataTable(meta.Destination);
+
+            using (DbCommand cmd = PrepareCommand(query))
+            {
+                using (DbDataAdapter da = new SqlDataAdapter())
+                {
+                    da.SelectCommand = cmd;
+
+                    if (context.Connection.State == ConnectionState.Open)
+                    {
+                        cmd.Connection = context.Connection;
+                        da.Fill(dataTable);
+                    }
+                    else
+                    {
+                        string connString = "";
+
+                        EntityConnection ec = (EntityConnection)context.Connection;
+
+                        if (!ec.ConnectionString.StartsWith("name="))
+                        {
+                            connString = ec.ConnectionString;
+                        }
+                        else
+                        {
+                            connString = ec.StoreConnection.ConnectionString;
+                        }
+
+                        using (cmd.Connection = new SqlConnection(connString))
+                        {
+                            da.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
         // This is used only to execute the Dynamic Query API
         static internal List<T> ToList<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
         {
@@ -1214,7 +1259,57 @@ namespace Tiraggo.DynamicQuery
             return list;
         }
 
+        static internal List<T> ToList<T>(tgDynamicQuerySerializable query, ObjectContext context) where T : class, new()
+        {
+            List<T> list = new List<T>();
+
+            tgMetadata meta = query;
+
+            try
+            {
+                DataTable dataTable = FillDataTable(query, context);
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    list.Add(CreatePocoObject<T>(row));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return list;
+        }
+
         static internal T[] ToArray<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
+        {
+            T[] array = null;
+
+            tgMetadata meta = query;
+
+            try
+            {
+                DataTable dataTable = FillDataTable(query, context);
+
+                array = new T[dataTable.Rows.Count];
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    array[i] = CreatePocoObject<T>(row);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return array;
+        }
+
+        static internal T[] ToArray<T>(tgDynamicQuerySerializable query, ObjectContext context) where T : class, new()
         {
             T[] array = null;
 
@@ -1274,7 +1369,65 @@ namespace Tiraggo.DynamicQuery
             return hash;
         }
 
+        static internal Dictionary<TKey, TSource> ToDictionary<TKey, TSource>(tgDynamicQuerySerializable query, ObjectContext context) where TSource : class, new()
+        {
+            Dictionary<TKey, TSource> hash = new Dictionary<TKey, TSource>();
+            tgColumnMetadata primaryKey;
+
+            tgMetadata meta = query;
+
+            if (meta.Columns.PrimaryKeys.Count != 1)
+            {
+                return hash;
+            }
+            else
+            {
+                primaryKey = meta.Columns.PrimaryKeys[0];
+            }
+
+            try
+            {
+                DataTable dataTable = FillDataTable(query, context);
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    hash[(TKey)row[primaryKey.Name]] = CreatePocoObject<TSource>(row);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return hash;
+        }
+
         static internal List<dynamic> ToAnonymousType(tgDynamicQuerySerializable query, DbContext context)
+        {
+            List<dynamic> list = new List<dynamic>();
+
+            tgMetadata meta = query;
+
+            try
+            {
+                DataTable dataTable = FillDataTable(query, context);
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    list.Add(CreatePocoObject(row));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return list;
+        }
+
+        static internal List<dynamic> ToAnonymousType(tgDynamicQuerySerializable query, ObjectContext context)
         {
             List<dynamic> list = new List<dynamic>();
 
@@ -1312,6 +1465,44 @@ namespace Tiraggo.DynamicQuery
                 else
                 {
                     using (SqlConnection connection = new SqlConnection(context.Database.Connection.ConnectionString))
+                    {
+                        connection.Open();
+                        cmd.Connection = connection;
+                        scalar = cmd.ExecuteScalar();
+                    }
+                }
+            }
+
+            return scalar;
+        }
+
+        static internal object ExecuteScalar(tgDynamicQuerySerializable query, ObjectContext context)
+        {
+            object scalar = null;
+
+            using (DbCommand cmd = PrepareCommand(query))
+            {
+                if (context.Connection.State == ConnectionState.Open)
+                {
+                    cmd.Connection = context.Connection;
+                    scalar = cmd.ExecuteScalar();
+                }
+                else
+                {
+                    string connString = "";
+
+                    EntityConnection ec = (EntityConnection)context.Connection;
+
+                    if (!ec.ConnectionString.StartsWith("name="))
+                    {
+                        connString = ec.ConnectionString;
+                    }
+                    else
+                    {
+                        connString = ec.StoreConnection.ConnectionString;
+                    }
+
+                    using (SqlConnection connection = new SqlConnection(connString))
                     {
                         connection.Open();
                         cmd.Connection = connection;
