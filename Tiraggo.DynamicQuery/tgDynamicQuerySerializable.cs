@@ -39,6 +39,7 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 
 
 namespace Tiraggo.DynamicQuery
@@ -1177,6 +1178,17 @@ namespace Tiraggo.DynamicQuery
             return QueryBuilder.ToDictionary<TKey, TSource>(this, context);
         }
 
+        public T ExecuteScalar<T>(DbContext context)
+        {
+            object val = QueryBuilder.ExecuteScalar(this, context);
+
+            Type t = typeof(T);
+            t = Nullable.GetUnderlyingType(t) ?? t;
+
+            return (val == null || DBNull.Value.Equals(val)) ?
+                default(T) : (T)Convert.ChangeType(val, t);
+        }
+
         #region Helper Routine
         private List<tgComparison> ProcessWhereItems(tgConjunction conj, params object[] theItems)
         {
@@ -1769,8 +1781,6 @@ namespace Tiraggo.DynamicQuery
         internal int? take;
 
         internal string lastQuery;
-        private object providerMetadata;
-        private object columns;
         private tgComparison prevComp;
 
         protected tgMetadata metadata;

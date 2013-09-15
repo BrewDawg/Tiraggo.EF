@@ -31,6 +31,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Dynamic;
@@ -1158,8 +1159,38 @@ namespace Tiraggo.DynamicQuery
             return searchCondition;
         }
 
+        static private DataTable FillDataTable(tgDynamicQuerySerializable query, DbContext context)
+        {
+            tgMetadata meta = query;
+
+            DataTable dataTable = new DataTable(meta.Destination);
+
+            using (DbCommand cmd = PrepareCommand(query))
+            {
+                using (DbDataAdapter da = new SqlDataAdapter())
+                {
+                    da.SelectCommand = cmd;
+
+                    if (context.Database.Connection.State == ConnectionState.Open)
+                    {
+                        cmd.Connection = context.Database.Connection;
+                        da.Fill(dataTable);
+                    }
+                    else
+                    {
+                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
+                        {
+                            da.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
         // This is used only to execute the Dynamic Query API
-        static public List<T> ToList<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
+        static internal List<T> ToList<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
         {
             List<T> list = new List<T>();
 
@@ -1167,20 +1198,7 @@ namespace Tiraggo.DynamicQuery
 
             try
             {
-                DataTable dataTable = new DataTable(meta.Destination);
-
-                using (SqlCommand cmd = PrepareCommand(query))
-                {
-                    using (SqlDataAdapter da = new SqlDataAdapter())
-                    {
-                        da.SelectCommand = cmd;
-
-                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
-                        {
-                            da.Fill(dataTable);
-                        }
-                    }
-                }
+                DataTable dataTable = FillDataTable(query, context);
 
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
@@ -1188,7 +1206,7 @@ namespace Tiraggo.DynamicQuery
                     list.Add(CreatePocoObject<T>(row));
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -1196,44 +1214,7 @@ namespace Tiraggo.DynamicQuery
             return list;
         }
 
-        static public List<dynamic> ToAnonymousType(tgDynamicQuerySerializable query, DbContext context)
-        {
-            List<dynamic> list = new List<dynamic>();
-
-            tgMetadata meta = query;
-
-            try
-            {
-                DataTable dataTable = new DataTable(meta.Destination);
-
-                using (SqlCommand cmd = PrepareCommand(query))
-                {
-                    using (SqlDataAdapter da = new SqlDataAdapter())
-                    {
-                        da.SelectCommand = cmd;
-
-                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
-                        {
-                            da.Fill(dataTable);
-                        }
-                    }
-                }
-
-                for (int i = 0; i < dataTable.Rows.Count; i++)
-                {
-                    DataRow row = dataTable.Rows[i];
-                    list.Add(CreatePocoObject(row));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-
-            return list;
-        }
-
-        static public T[] ToArray<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
+        static internal T[] ToArray<T>(tgDynamicQuerySerializable query, DbContext context) where T : class, new()
         {
             T[] array = null;
 
@@ -1241,20 +1222,7 @@ namespace Tiraggo.DynamicQuery
 
             try
             {
-                DataTable dataTable = new DataTable(meta.Destination);
-
-                using (SqlCommand cmd = PrepareCommand(query))
-                {
-                    using (SqlDataAdapter da = new SqlDataAdapter())
-                    {
-                        da.SelectCommand = cmd;
-
-                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
-                        {
-                            da.Fill(dataTable);
-                        }
-                    }
-                }
+                DataTable dataTable = FillDataTable(query, context);
 
                 array = new T[dataTable.Rows.Count];
 
@@ -1264,7 +1232,7 @@ namespace Tiraggo.DynamicQuery
                     array[i] = CreatePocoObject<T>(row);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -1272,7 +1240,7 @@ namespace Tiraggo.DynamicQuery
             return array;
         }
 
-        public static Dictionary<TKey, TSource> ToDictionary<TKey, TSource>(tgDynamicQuerySerializable query, DbContext context) where TSource : class, new()
+        static internal Dictionary<TKey, TSource> ToDictionary<TKey, TSource>(tgDynamicQuerySerializable query, DbContext context) where TSource : class, new()
         {
             Dictionary<TKey, TSource> hash = new Dictionary<TKey, TSource>();
             tgColumnMetadata primaryKey;
@@ -1290,20 +1258,7 @@ namespace Tiraggo.DynamicQuery
 
             try
             {
-                DataTable dataTable = new DataTable(meta.Destination);
-
-                using (SqlCommand cmd = PrepareCommand(query))
-                {
-                    using (SqlDataAdapter da = new SqlDataAdapter())
-                    {
-                        da.SelectCommand = cmd;
-
-                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
-                        {
-                            da.Fill(dataTable);
-                        }
-                    }
-                }
+                DataTable dataTable = FillDataTable(query, context);
 
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
@@ -1311,7 +1266,7 @@ namespace Tiraggo.DynamicQuery
                     hash[(TKey)row[primaryKey.Name]] = CreatePocoObject<TSource>(row);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -1319,92 +1274,118 @@ namespace Tiraggo.DynamicQuery
             return hash;
         }
 
-        private static T CreatePocoObject<T>(DataRow dr) where T : class, new()
+        static internal List<dynamic> ToAnonymousType(tgDynamicQuerySerializable query, DbContext context)
         {
+            List<dynamic> list = new List<dynamic>();
+
+            tgMetadata meta = query;
+
             try
             {
-                T oClass = new T();
-                Type tClass = typeof(T);
-                MemberInfo[] methods = tClass.GetMethods();
-                ArrayList aMethods = new ArrayList();
-                object[] aoParam = new object[1];
+                DataTable dataTable = FillDataTable(query, context);
 
-                //Get simple SET methods
-                foreach (MethodInfo method in methods)
+                for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    if (method.DeclaringType == tClass && method.Name.StartsWith("set_"))
-                        aMethods.Add(method);
+                    DataRow row = dataTable.Rows[i];
+                    list.Add(CreatePocoObject(row));
                 }
-
-                //Invoke each set method with mapped value
-                for (int i = 0; i < aMethods.Count; i++)
-                {
-                    string sColumn;
-
-                    try
-                    {
-                        MethodInfo mInvoke = (MethodInfo)aMethods[i];
-                        //Remove "set_" from method name
-                        sColumn = mInvoke.Name.Remove(0, 4);
-                        //If row contains value for method...
-                        if (dr.Table.Columns.Contains(sColumn))
-                        {
-                            object value = dr[sColumn];
-
-                            if (value != DBNull.Value)
-                            {
-                                //Get the parameter (always one for a set property)
-                                ParameterInfo[] api = mInvoke.GetParameters();
-                                ParameterInfo pi = api[0];
-
-                                Type t = Nullable.GetUnderlyingType(pi.ParameterType) ?? pi.ParameterType;
-
-                                //Convert value to parameter type
-                                aoParam[0] = Convert.ChangeType(dr[sColumn], t);
-
-                                //Invoke the method
-                                mInvoke.Invoke(oClass, aoParam);
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        System.Diagnostics.Debug.Assert(false, "SetValuesToObject failed to set a value to an object");
-                    }
-                }
-
-                return oClass;
             }
-            catch
+            catch (Exception)
             {
-                System.Diagnostics.Debug.Assert(false, "SetValuesToObject failed to create an object");
+                throw;
             }
 
-            return null;
+            return list;
         }
 
-        private static dynamic CreatePocoObject(DataRow dr)
+        static internal object ExecuteScalar(tgDynamicQuerySerializable query, DbContext context)
         {
-            dynamic o = new ExpandoObject();
+            object scalar = null;
 
-            try
+            using (DbCommand cmd = PrepareCommand(query))
             {
-                DataColumnCollection columns = dr.Table.Columns;
-
-                foreach (DataColumn column in columns)
+                if (context.Database.Connection.State == ConnectionState.Open)
                 {
-                    IDictionary<string, object> myObject = o;
-                    myObject.Add(column.ColumnName, dr[column] == DBNull.Value ? null : dr[column]);
+                    cmd.Connection = context.Database.Connection;
+                    scalar = cmd.ExecuteScalar();
                 }
-
-                return o;
+                else
+                {
+                    using (SqlConnection connection = new SqlConnection(context.Database.Connection.ConnectionString))
+                    {
+                        connection.Open();
+                        cmd.Connection = connection;
+                        scalar = cmd.ExecuteScalar();
+                    }
+                }
             }
-            catch
+
+            return scalar;
+        }
+
+        private static T CreatePocoObject<T>(DataRow dr) where T : class, new()
+        {
+            T oClass = new T();
+            Type tClass = typeof(T);
+            MemberInfo[] methods = tClass.GetMethods();
+            ArrayList aMethods = new ArrayList();
+            object[] aoParam = new object[1];
+
+            //Get simple SET methods
+            foreach (MethodInfo method in methods)
             {
-                System.Diagnostics.Debug.Assert(false, "static dynamic CreatePocoObject(DataRow dr)");
+                if (method.DeclaringType == tClass && method.Name.StartsWith("set_"))
+                    aMethods.Add(method);
             }
 
-            return null;
+            //Invoke each set method with mapped value
+            for (int i = 0; i < aMethods.Count; i++)
+            {
+                string sColumn;
+
+
+                MethodInfo mInvoke = (MethodInfo)aMethods[i];
+                //Remove "set_" from method name
+                sColumn = mInvoke.Name.Remove(0, 4);
+                //If row contains value for method...
+                if (dr.Table.Columns.Contains(sColumn))
+                {
+                    object value = dr[sColumn];
+
+                    if (value != DBNull.Value)
+                    {
+                        //Get the parameter (always one for a set property)
+                        ParameterInfo[] api = mInvoke.GetParameters();
+                        ParameterInfo pi = api[0];
+
+                        Type t = Nullable.GetUnderlyingType(pi.ParameterType) ?? pi.ParameterType;
+
+                        //Convert value to parameter type
+                        aoParam[0] = Convert.ChangeType(dr[sColumn], t);
+
+                        //Invoke the method
+                        mInvoke.Invoke(oClass, aoParam);
+                    }
+                }
+            }
+
+            return oClass;
+        }
+
+        private static ExpandoObject CreatePocoObject(DataRow dr)
+        {
+            ExpandoObject o = new ExpandoObject();
+
+
+            DataColumnCollection columns = dr.Table.Columns;
+
+            foreach (DataColumn column in columns)
+            {
+                IDictionary<string, object> myObject = o;
+                myObject.Add(column.ColumnName, dr[column] == DBNull.Value ? null : dr[column]);
+            }
+
+            return o;
         }
     }
 }
