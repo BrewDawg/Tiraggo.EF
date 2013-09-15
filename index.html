@@ -104,10 +104,10 @@
 <p>There are more ways that ToList() to fetch data.</p>
 
 <ul>
-<li>ToList&lt;&gt;()</li>
-<li>ToArray&lt;&gt;()</li>
-<li>ToDictionary&lt;&gt;() - Primary key is the "Key" value</li>
-<li>ToAnonymousType() </li>
+<li>ToList</li>
+<li>ToArray</li>
+<li>ToDictionary - Primary key is the "Key" value</li>
+<li>ToAnonymousType</li>
 </ul><div class="highlight highlight-csharp"><pre><span class="n">ErrorLogQuery</span> <span class="n">q</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ErrorLogQuery</span><span class="p">();</span>
 <span class="n">q</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">ErrorLogId</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">Method</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
 <span class="n">q</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">DateOccurred</span><span class="p">.</span><span class="n">Descending</span><span class="p">);</span>
