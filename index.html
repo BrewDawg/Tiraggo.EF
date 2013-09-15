@@ -105,18 +105,18 @@
 
 <span class="k">using</span> <span class="p">(</span><span class="n">MyEntities</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyEntities</span> <span class="p">())</span>
 <span class="p">{</span>
-    <span class="c1">// List</span>
-    <span class="n">List</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;</span> <span class="n">list</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToList</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
+  <span class="c1">// List</span>
+  <span class="n">List</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;</span> <span class="n">list</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToList</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
 
-    <span class="c1">// Array</span>
-    <span class="n">ErrorLog</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToArray</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
+  <span class="c1">// Array</span>
+  <span class="n">ErrorLog</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToArray</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
 
-    <span class="c1">// Dictionary where "Key" is the Primary Key</span>
-    <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;</span> <span class="n">dict</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToDictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
+  <span class="c1">// Dictionary where "Key" is the Primary Key</span>
+  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;</span> <span class="n">dict</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToDictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
 
-    <span class="c1">// Anonymous - useful when bringing back extra columns in a join </span>
-    <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToAnonymousType</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">p</span><span class="p">.</span><span class="n">ErrorLogId</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">Message</span> <span class="p">}).</span><span class="n">ToList</span><span class="p">();</span>
+  <span class="c1">// Anonymous - useful when bringing back extra columns in a join </span>
+  <span class="kt">var</span> <span class="n">anonymous</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToAnonymousType</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">p</span><span class="p">.</span><span class="n">ErrorLogId</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">Message</span> <span class="p">}).</span><span class="n">ToList</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
