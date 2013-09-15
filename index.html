@@ -350,7 +350,7 @@
             <span class="p">.</span><span class="n">GroupBy</span><span class="p">(</span><span class="n">oiq</span><span class="p">.</span><span class="n">OrderID</span><span class="p">)</span>
     <span class="p">).</span><span class="n">As</span><span class="p">(</span><span class="s">"sub"</span><span class="p">);</span>
 <span class="n">oq</span><span class="p">.</span><span class="n">InnerJoin</span><span class="p">(</span><span class="n">oq</span><span class="p">).</span><span class="n">On</span><span class="p">(</span><span class="n">oq</span><span class="p">.</span><span class="n">OrderID</span> <span class="p">==</span> <span class="n">oiq</span><span class="p">.</span><span class="n">OrderID</span><span class="p">);</span>
-<span class="n">oq</span><span class="p">.</span><span class="n">es</span><span class="p">.</span><span class="n">WithNoLock</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="n">oq</span><span class="p">.</span><span class="n">tg</span><span class="p">.</span><span class="n">WithNoLock</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
 
 <span class="k">using</span> <span class="p">(</span><span class="n">MyEntities</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyEntities</span><span class="p">())</span>
 <span class="p">{</span>
