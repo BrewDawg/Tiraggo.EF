@@ -116,7 +116,7 @@
 
   <span class="c1">// Anonymous - useful when bringing back extra columns in a join </span>
   <span class="kt">var</span> <span class="n">anonymous</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToAnonymousType</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
-     <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">p</span><span class="p">.</span><span class="n">ErrorLogId</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">Message</span> <span class="p">}).</span><span class="n">ToList</span><span class="p">();</span>
+      <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">p</span><span class="p">.</span><span class="n">ErrorLogId</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">Message</span> <span class="p">}).</span><span class="n">ToList</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -142,7 +142,7 @@
 <p>You can tell what version your EDMX files are by looking at them in XML format, the version is right at the top:</p>
 
 <div class="highlight highlight-xml"><pre><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
-<span class="nt">&lt;edmx:Edmx</span> <span class="na">Version=</span><span class="s">"3.0"</span> <span class="na">xmlns:edmx=</span><span class="s">"http://schemas.microsoft.com/ado/2009/11/edmx"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;edmx:Edmx</span> <span class="na">Version=</span><span class="s">"3.0"</span> <span class="na">xmlns:edmx=</span><span class="s">"http://schemas..."</span><span class="nt">&gt;</span>
 </pre></div>
 
 <p>Notice below that the "TiraggoEF_v3.tt" template generated the Query class in my solution. This is because I am in VS2012 and generating V3 EDMX files. </p>
