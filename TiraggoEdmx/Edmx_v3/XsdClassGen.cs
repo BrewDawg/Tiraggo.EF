@@ -1,4 +1,8 @@
-﻿using System;
+﻿//=======================================================
+// Copyright © Mike Griffin 2013
+//=======================================================
+
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
