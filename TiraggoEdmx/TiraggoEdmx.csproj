@@ -68,32 +68,6 @@
     <Compile Include="TiraggoEntityInfo_v3.cs">
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="XsdClassGen.mapping" />
-    <None Include="XsdClassGen.tt">
-      <Generator>TextTemplatingFileGenerator1</Generator>
-      <LastGenOutput>XsdClassGen.cs</LastGenOutput>
-    </None>
-    <None Include="Xsd_v2\NorthWindModel.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Xsd_v2\NorthWindModel1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Xsd_v2\NorthWindModel2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Xsd_v2\NorthWindModel3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Xsd_v2\NorthWindModel4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Xsd_v2\NorthWindModel5.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Xsd_v3\Model1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -110,6 +84,32 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Xsd_v3\Model15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="XsdClassGen.mapping" />
+    <None Include="XsdClassGen.tt">
+      <Generator>TextTemplatingFileGenerator1</Generator>
+      <LastGenOutput>XsdClassGen.cs</LastGenOutput>
+    </None>
+    <None Include="Xsd_v2\V2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v2\V21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v2\V22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v2\V23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v2\V24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Xsd_v2\V25.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
