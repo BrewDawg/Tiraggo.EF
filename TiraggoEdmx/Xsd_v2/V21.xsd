@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+  <xs:element name="Schema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="EntityContainer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="EntitySet">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element name="DefiningQuery" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="EntityType" type="xs:string" use="required" />
+                  <xs:attribute xmlns:q1="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" ref="q1:Type" use="required" />
+                  <xs:attribute name="Schema" type="xs:string" use="optional" />
+                  <xs:attribute xmlns:q2="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" ref="q2:Schema" use="optional" />
+                  <xs:attribute xmlns:q3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" ref="q3:Name" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="AssociationSet">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="End">
+                      <xs:complexType>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                        <xs:attribute name="EntitySet" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Association" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="EntityType">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Key">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="PropertyRef">
+                      <xs:complexType>
+                        <xs:attribute name="Name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="Property">
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Nullable" type="xs:boolean" use="optional" />
+                  <xs:attribute name="StoreGeneratedPattern" type="xs:string" use="optional" />
+                  <xs:attribute name="MaxLength" type="xs:unsignedByte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="Association">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="End">
+                <xs:complexType>
+                  <xs:attribute name="Role" type="xs:string" use="required" />
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Multiplicity" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ReferentialConstraint">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Principal">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PropertyRef">
+                            <xs:complexType>
+                              <xs:attribute name="Name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Dependent">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PropertyRef">
+                            <xs:complexType>
+                              <xs:attribute name="Name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="Function">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element maxOccurs="unbounded" name="Parameter">
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Mode" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+            <xs:attribute name="Aggregate" type="xs:boolean" use="required" />
+            <xs:attribute name="BuiltIn" type="xs:boolean" use="required" />
+            <xs:attribute name="NiladicFunction" type="xs:boolean" use="required" />
+            <xs:attribute name="IsComposable" type="xs:boolean" use="required" />
+            <xs:attribute name="ParameterTypeSemantics" type="xs:string" use="required" />
+            <xs:attribute name="Schema" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Namespace" type="xs:string" use="required" />
+      <xs:attribute name="Alias" type="xs:string" use="required" />
+      <xs:attribute name="Provider" type="xs:string" use="required" />
+      <xs:attribute name="ProviderManifestToken" type="xs:unsignedShort" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
