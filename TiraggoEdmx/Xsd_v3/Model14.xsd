@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.microsoft.com/ado/2009/02/edm/annotation" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:attribute name="UseStrongSpatialTypes" type="xs:boolean" />
-    <xs:attribute name="LazyLoadingEnabled" type="xs:boolean" />
-    <xs:attribute name="StoreGeneratedPattern" type="xs:string" />
+  <xs:attribute name="UseStrongSpatialTypes" type="xs:boolean" />
+  <xs:attribute name="LazyLoadingEnabled" type="xs:boolean" />
+  <xs:attribute name="StoreGeneratedPattern" type="xs:string" />
 </xs:schema>

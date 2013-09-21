@@ -13,41 +13,41 @@ using System.Xml.Serialization;
 
 namespace TiraggoEdmx_v3
 {
-	public partial class Schema1
+	public partial class ConceptualSchema
 	{
-		public static Schema1 DeserializeFrom(Stream stream)
+		public static ConceptualSchema DeserializeFrom(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema1));
-			return (Schema1)serializer.Deserialize(stream);
+			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
+			return (ConceptualSchema)serializer.Deserialize(stream);
 		}
 
-		public static Schema1 DeserializeFrom(TextReader reader)
+		public static ConceptualSchema DeserializeFrom(TextReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema1));
-			return (Schema1)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
+			return (ConceptualSchema)serializer.Deserialize(reader);
 		}
 
-		public static Schema1 DeserializeFrom(XmlReader reader)
+		public static ConceptualSchema DeserializeFrom(XmlReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema1));
-			return (Schema1)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
+			return (ConceptualSchema)serializer.Deserialize(reader);
 		}
 
 		public void SerializeTo(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema1));
+			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
 			serializer.Serialize(stream, this);
 		}
 
 		public void SerializeTo(TextWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema1));
+			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
 			serializer.Serialize(writer, this);
 		}
 
 		public void SerializeTo(XmlWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema1));
+			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
 			serializer.Serialize(writer, this);
 		}
 	}

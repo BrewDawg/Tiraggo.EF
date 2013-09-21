@@ -1,0 +1,12 @@
+﻿#
+# This file can be used to map schema namespaces to code namespaces
+# and rename schema element names to code type names
+#
+# The format of each line is comma delimited and empty lines and lines begining with # are ignored
+#
+# To map a specific schema namespace to a specific code namespace use the format:
+#    <schema namespace>,<code namespace>
+#
+# To map a specific schema element name to a specific code type name use the format:
+#    <schema namespace>,<schema element name>,<code type name>
+#

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.microsoft.com/ado/2009/11/edm" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+  <xs:element name="Schema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="EntityContainer">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="EntitySet">
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="EntityType" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="AssociationSet">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="End">
+                      <xs:complexType>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                        <xs:attribute name="EntitySet" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Association" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="FunctionImport">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element maxOccurs="unbounded" name="Parameter">
+                      <xs:complexType>
+                        <xs:attribute name="Name" type="xs:string" use="required" />
+                        <xs:attribute name="Mode" type="xs:string" use="required" />
+                        <xs:attribute name="Type" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="ReturnType" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+            <xs:attribute xmlns:q1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" ref="q1:LazyLoadingEnabled" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="EntityType">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Key">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="PropertyRef">
+                      <xs:complexType>
+                        <xs:attribute name="Name" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="Property">
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Nullable" type="xs:boolean" use="optional" />
+                  <xs:attribute xmlns:q2="http://schemas.microsoft.com/ado/2009/02/edm/annotation" ref="q2:StoreGeneratedPattern" use="optional" />
+                  <xs:attribute name="MaxLength" type="xs:string" use="optional" />
+                  <xs:attribute name="Unicode" type="xs:boolean" use="optional" />
+                  <xs:attribute name="FixedLength" type="xs:boolean" use="optional" />
+                  <xs:attribute name="Precision" type="xs:unsignedByte" use="optional" />
+                  <xs:attribute name="Scale" type="xs:unsignedByte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="NavigationProperty">
+                <xs:complexType>
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Relationship" type="xs:string" use="required" />
+                  <xs:attribute name="FromRole" type="xs:string" use="required" />
+                  <xs:attribute name="ToRole" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="Association">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="End">
+                <xs:complexType>
+                  <xs:attribute name="Role" type="xs:string" use="required" />
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Multiplicity" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="ReferentialConstraint">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Principal">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PropertyRef">
+                            <xs:complexType>
+                              <xs:attribute name="Name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Dependent">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="PropertyRef">
+                            <xs:complexType>
+                              <xs:attribute name="Name" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Role" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name="ComplexType">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Property">
+                <xs:complexType>
+                  <xs:attribute name="Type" type="xs:string" use="required" />
+                  <xs:attribute name="Name" type="xs:string" use="required" />
+                  <xs:attribute name="Nullable" type="xs:boolean" use="required" />
+                  <xs:attribute name="MaxLength" type="xs:string" use="optional" />
+                  <xs:attribute name="Precision" type="xs:unsignedByte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Namespace" type="xs:string" use="required" />
+      <xs:attribute name="Alias" type="xs:string" use="required" />
+      <xs:attribute xmlns:q3="http://schemas.microsoft.com/ado/2009/02/edm/annotation" ref="q3:UseStrongSpatialTypes" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
