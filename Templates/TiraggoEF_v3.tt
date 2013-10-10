@@ -172,7 +172,13 @@ using Tiraggo.DynamicQuery;
 
                 meta.Source = "<#=info.StorageInfo.Name#>";
                 meta.Destination = "<#=info.StorageInfo.Name#>";
+<#				if(info.StorageInfo.Schema != null)
+                {
+#>
                 meta.Schema = "<#=info.StorageInfo.Schema#>";
+<#
+                }
+#>
 
                 return meta;
             }
