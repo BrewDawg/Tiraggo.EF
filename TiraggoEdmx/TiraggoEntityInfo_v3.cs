@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using TiraggoEdmx_v3;
 
+
 namespace TiraggoEdmx_v3
 {
     public partial class TiraggoEntityInfo
