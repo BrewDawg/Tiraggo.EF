@@ -8,41 +8,41 @@ using System.Xml.Serialization;
 
 namespace TiraggoEdmx_v3
 {
-	public partial class Mapping
+	public partial class tgMapping
 	{
-		public static Mapping DeserializeFrom(Stream stream)
+		public static tgMapping DeserializeFrom(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
-			return (Mapping)serializer.Deserialize(stream);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgMapping));
+			return (tgMapping)serializer.Deserialize(stream);
 		}
 
-		public static Mapping DeserializeFrom(TextReader reader)
+		public static tgMapping DeserializeFrom(TextReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
-			return (Mapping)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgMapping));
+			return (tgMapping)serializer.Deserialize(reader);
 		}
 
-		public static Mapping DeserializeFrom(XmlReader reader)
+		public static tgMapping DeserializeFrom(XmlReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
-			return (Mapping)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgMapping));
+			return (tgMapping)serializer.Deserialize(reader);
 		}
 
 		public void SerializeTo(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgMapping));
 			serializer.Serialize(stream, this);
 		}
 
 		public void SerializeTo(TextWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgMapping));
 			serializer.Serialize(writer, this);
 		}
 
 		public void SerializeTo(XmlWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Mapping));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgMapping));
 			serializer.Serialize(writer, this);
 		}
 	}

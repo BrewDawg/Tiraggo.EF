@@ -28,29 +28,29 @@ namespace TiraggoEdmx_v2
                 .Where(s => s.Name == Mapping.EntityTypeMapping.MappingFragment.StoreEntitySet).Single();
 
             ConceptualModel = edmx.Runtime.ConceptualModels.Schema.EntityTypes
-                .Where(c => c is ConceptualEntityType).Select(c => c as ConceptualEntityType).ToList<ConceptualEntityType>()
+                .Where(c => c is tgConceptualEntityType).Select(c => c as tgConceptualEntityType).ToList<tgConceptualEntityType>()
                 .Where(c => c.Name == conceptualName).Single();
 
             ColumnMappings = Mapping.EntityTypeMapping.MappingFragment.ScalarProperties.ToDictionary(p => p.Name, p => p.ColumnName);
 
             ColumnCLR = ConceptualModel.Properties.ToDictionary(p => p.Name, p => p);
 
-            EntityType sql = edm.Runtime.StorageModels.Schema.EntityTypes.Where(e => e.Name == Mapping.EntityTypeMapping.MappingFragment.StoreEntitySet).Single();
+            tgEntityType sql = edm.Runtime.StorageModels.Schema.EntityTypes.Where(e => e.Name == Mapping.EntityTypeMapping.MappingFragment.StoreEntitySet).Single();
 
             ColumnSQL = sql.Properties.ToDictionary(e => e.Name, e => e);
 
             PrimaryKeys = new Dictionary<string, string>();
-            foreach (PropertyRef key in ConceptualModel.Key)
+            foreach (tgPropertyRef key in ConceptualModel.Key)
             {
                 PrimaryKeys[key.Name] = key.Name;
             }
         }
 
-        public EntitySetMapping Mapping { get; internal set; }
+        public tgEntitySetMapping Mapping { get; internal set; }
 
-        public EntitySet StorageInfo { get; internal set; }
+        public tgEntitySet StorageInfo { get; internal set; }
 
-        public ConceptualEntityType ConceptualModel { get; internal set; }
+        public tgConceptualEntityType ConceptualModel { get; internal set; }
 
         public bool IsInPrimaryKey(string property)
         {
@@ -59,9 +59,9 @@ namespace TiraggoEdmx_v2
 
         public Dictionary<string, string> ColumnMappings { get; internal set; }
 
-        public Dictionary<string, ColumnCLR> ColumnCLR { get; internal set; }
+        public Dictionary<string, tgProperty> ColumnCLR { get; internal set; }
 
-        public Dictionary<string, Property> ColumnSQL { get; internal set; }
+        public Dictionary<string, tgProperty> ColumnSQL { get; internal set; }
 
         public Dictionary<string, string> PrimaryKeys { get; internal set; }
     }

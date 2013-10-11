@@ -12,7 +12,7 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx", IsNullable = false)]
@@ -33,16 +33,16 @@ namespace TiraggoEdmx_v2
         }
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Runtime runtimeField;
+        private tgRuntime runtimeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Designer designerField;
+        private tgDesigner designerField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private decimal versionField;
 
         /// <remarks/>
-        public Runtime Runtime
+        public tgRuntime Runtime
         {
             get
             {
@@ -55,7 +55,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public Designer Designer
+        public tgDesigner Designer
         {
             get
             {
@@ -85,22 +85,22 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class Runtime
+    public partial class tgRuntime
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private StorageModels storageModelsField;
+        private tgStorageModels storageModelsField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConceptualModel conceptualModelsField;
+        private tgConceptualModel conceptualModelsField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Mappings mappingsField;
+        private tgMappings mappingsField;
 
         /// <remarks/>
-        public StorageModels StorageModels
+        public tgStorageModels StorageModels
         {
             get
             {
@@ -113,7 +113,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public ConceptualModel ConceptualModels
+        public tgConceptualModel ConceptualModels
         {
             get
             {
@@ -126,7 +126,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public Mappings Mappings
+        public tgMappings Mappings
         {
             get
             {
@@ -142,17 +142,17 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class StorageModels
+    public partial class tgStorageModels
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Schema schemaField;
+        private tgSchema schemaField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-        public Schema Schema
+        public tgSchema Schema
         {
             get
             {
@@ -168,22 +168,22 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Schema
+    public partial class tgSchema
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EntityContainer entityContainerField;
+        private tgEntityContainer entityContainerField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EntityType[] entityTypeField;
+        private tgEntityType[] entityTypeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Association[] associationField;
+        private tgAssociation[] associationField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Function[] functionField;
+        private tgFunction[] functionField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string namespaceField;
@@ -198,7 +198,7 @@ namespace TiraggoEdmx_v2
         private ushort providerManifestTokenField;
 
         /// <remarks/>
-        public EntityContainer EntityContainer
+        public tgEntityContainer EntityContainer
         {
             get
             {
@@ -212,7 +212,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntityType")]
-        public EntityType[] EntityTypes
+        public tgEntityType[] EntityTypes
         {
             get
             {
@@ -226,7 +226,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Association")]
-        public Association[] Associations
+        public tgAssociation[] Associations
         {
             get
             {
@@ -240,7 +240,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Function")]
-        public Function[] Functions
+        public tgFunction[] Functions
         {
             get
             {
@@ -312,23 +312,23 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class EntityContainer
+    public partial class tgEntityContainer
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EntitySet[] entitySetField;
+        private tgEntitySet[] entitySetField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AssociationSet[] associationSetField;
+        private tgAssociationSet[] associationSetField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntitySet")]
-        public EntitySet[] EntitySets
+        public tgEntitySet[] EntitySets
         {
             get
             {
@@ -342,7 +342,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("AssociationSet")]
-        public AssociationSet[] AssociationSets
+        public tgAssociationSet[] AssociationSets
         {
             get
             {
@@ -372,10 +372,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class EntitySet
+    public partial class tgEntitySet
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string definingQueryField;
@@ -499,13 +499,13 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class AssociationSet
+    public partial class tgAssociationSet
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private End[] endField;
+        private tgEnd[] endField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -515,7 +515,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("End")]
-        public End[] Ends
+        public tgEnd[] Ends
         {
             get
             {
@@ -559,10 +559,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class End
+    public partial class tgEnd
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string roleField;
@@ -602,23 +602,23 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class EntityType
+    public partial class tgEntityType
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PropertyRef[] keyField;
+        private tgPropertyRef[] keyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Property[] propertyField;
+        private tgProperty[] propertyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("PropertyRef", IsNullable = false)]
-        public PropertyRef[] Key
+        public tgPropertyRef[] Key
         {
             get
             {
@@ -632,7 +632,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Property")]
-        public Property[] Properties
+        public tgProperty[] Properties
         {
             get
             {
@@ -662,10 +662,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Key
+    public partial class tgKey
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -688,173 +688,23 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Property
+    public partial class tgAssociation
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string nameField;
+        private tgSchemaAssociationEnd[] endField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string typeField;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private bool nullableField;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private bool nullableFieldSpecified;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string storeGeneratedPatternField;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private string maxLengthField;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private bool maxLengthFieldSpecified;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Type
-        {
-            get
-            {
-                if (this.typeField == "Binary")
-                {
-                    this.typeField = "int";
-
-                    try
-                    {
-                        if (!String.IsNullOrWhiteSpace(this.MaxLength) && ulong.Parse(this.MaxLength) > 1)
-                        {
-                            this.typeField += "[]";
-                        }
-                    }
-                    catch
-                    {
-                        return "FAILED";
-                    }
-                }
-
-                return this.typeField;
-            }
-            set
-            {
-                this.typeField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool Nullable
-        {
-            get
-            {
-                return this.nullableField;
-            }
-            set
-            {
-                this.nullableField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool NullableSpecified
-        {
-            get
-            {
-                return this.nullableFieldSpecified;
-            }
-            set
-            {
-                this.nullableFieldSpecified = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string StoreGeneratedPattern
-        {
-            get
-            {
-                return this.storeGeneratedPatternField;
-            }
-            set
-            {
-                this.storeGeneratedPatternField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string MaxLength
-        {
-            get
-            {
-                if (!String.IsNullOrWhiteSpace(this.maxLengthField) && this.maxLengthField.ToLower() == "max")
-                {
-                    return "2147483647";
-                }
-
-                return this.maxLengthField;
-            }
-            set
-            {
-                this.maxLengthField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MaxLengthSpecified
-        {
-            get
-            {
-                return this.maxLengthFieldSpecified;
-            }
-            set
-            {
-                this.maxLengthFieldSpecified = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
-
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Association
-    {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private SchemaAssociationEnd[] endField;
-
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ReferentialConstraint referentialConstraintField;
+        private tgReferentialConstraint referentialConstraintField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("End")]
-        public SchemaAssociationEnd[] Ends
+        public tgSchemaAssociationEnd[] Ends
         {
             get
             {
@@ -867,7 +717,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public ReferentialConstraint ReferentialConstraint
+        public tgReferentialConstraint ReferentialConstraint
         {
             get
             {
@@ -897,10 +747,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class SchemaAssociationEnd
+    public partial class tgSchemaAssociationEnd
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string roleField;
@@ -957,19 +807,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class ReferentialConstraint
+    public partial class tgReferentialConstraint
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Principal principalField;
+        private tgPrincipal principalField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Dependent dependentField;
+        private tgDependent dependentField;
 
         /// <remarks/>
-        public Principal Principal
+        public tgPrincipal Principal
         {
             get
             {
@@ -982,7 +832,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public Dependent Dependent
+        public tgDependent Dependent
         {
             get
             {
@@ -998,19 +848,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Principal
+    public partial class tgPrincipal
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PropertyRef propertyRefField;
+        private tgPropertyRef propertyRefField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string roleField;
 
         /// <remarks/>
-        public PropertyRef PropertyRef
+        public tgPropertyRef PropertyRef
         {
             get
             {
@@ -1040,10 +890,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class PropertyRef
+    public partial class tgPropertyRef
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -1066,19 +916,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Dependent
+    public partial class tgDependent
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PropertyRef propertyRefField;
+        private tgPropertyRef propertyRefField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string roleField;
 
         /// <remarks/>
-        public PropertyRef PropertyRef
+        public tgPropertyRef PropertyRef
         {
             get
             {
@@ -1108,13 +958,13 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Function
+    public partial class tgFunction
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Parameter[] parameterField;
+        private tgParameter[] parameterField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -1139,7 +989,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Parameter")]
-        public Parameter[] Parameters
+        public tgParameter[] Parameters
         {
             get
             {
@@ -1253,10 +1103,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2009/02/edm/ssdl")]
-    public partial class Parameter
+    public partial class tgParameter
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -1313,17 +1163,17 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class ConceptualModel
+    public partial class tgConceptualModel
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConceptualSchema schemaField;
+        private tgConceptualSchema schemaField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-        public ConceptualSchema Schema
+        public tgConceptualSchema Schema
         {
             get
             {
@@ -1339,19 +1189,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ConceptualSchema
+    public partial class tgConceptualSchema
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConceptualEntityContainer entityContainerField;
+        private tgConceptualEntityContainer entityContainerField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConceptualEntityType[] entityTypeField;
+        private tgConceptualEntityType[] entityTypeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Association[] associationField;
+        private tgAssociation[] associationField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string namespaceField;
@@ -1360,7 +1210,7 @@ namespace TiraggoEdmx_v2
         private string aliasField;
 
         /// <remarks/>
-        public ConceptualEntityContainer EntityContainer
+        public tgConceptualEntityContainer EntityContainer
         {
             get
             {
@@ -1374,7 +1224,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntityType")]
-        public ConceptualEntityType[] EntityTypes
+        public tgConceptualEntityType[] EntityTypes
         {
             get
             {
@@ -1388,7 +1238,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Association")]
-        public Association[] Associations
+        public tgAssociation[] Associations
         {
             get
             {
@@ -1432,16 +1282,16 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ConceptualEntityContainer
+    public partial class tgConceptualEntityContainer
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConceptualEntitySet[] entitySetField;
+        private tgConceptualEntitySet[] entitySetField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConcepturalAssociationSet[] associationSetField;
+        private tgConcepturalAssociationSet[] associationSetField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -1451,7 +1301,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntitySet")]
-        public ConceptualEntitySet[] EntitySets
+        public tgConceptualEntitySet[] EntitySets
         {
             get
             {
@@ -1465,7 +1315,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("AssociationSet")]
-        public ConcepturalAssociationSet[] AssociationSets
+        public tgConcepturalAssociationSet[] AssociationSets
         {
             get
             {
@@ -1509,10 +1359,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ConceptualEntitySet
+    public partial class tgConceptualEntitySet
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -1552,13 +1402,13 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ConcepturalAssociationSet
+    public partial class tgConcepturalAssociationSet
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ConceptualAssociationSetEnd[] endField;
+        private tgConceptualAssociationSetEnd[] endField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -1568,7 +1418,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("End")]
-        public ConceptualAssociationSetEnd[] Ends
+        public tgConceptualAssociationSetEnd[] Ends
         {
             get
             {
@@ -1612,10 +1462,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ConceptualAssociationSetEnd
+    public partial class tgConceptualAssociationSetEnd
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string roleField;
@@ -1655,26 +1505,26 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ConceptualEntityType
+    public partial class tgConceptualEntityType
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private PropertyRef[] keyField;
+        private tgPropertyRef[] keyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ColumnCLR[] propertyField;
+        private tgProperty[] propertyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private NavigationProperty[] navigationPropertyField;
+        private tgNavigationProperty[] navigationPropertyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("PropertyRef", IsNullable = false)]
-        public PropertyRef[] Key
+        public tgPropertyRef[] Key
         {
             get
             {
@@ -1688,7 +1538,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Property")]
-        public ColumnCLR[] Properties
+        public tgProperty[] Properties
         {
             get
             {
@@ -1702,7 +1552,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("NavigationProperty")]
-        public NavigationProperty[] NavigationPropertys
+        public tgNavigationProperty[] NavigationPropertys
         {
             get
             {
@@ -1732,10 +1582,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class ColumnCLR
+    public partial class tgProperty
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -2001,10 +1851,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/edm")]
-    public partial class NavigationProperty
+    public partial class tgNavigationProperty
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -2078,17 +1928,17 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class Mappings
+    public partial class tgMappings
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private Mapping mappingField;
+        private tgMapping mappingField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-        public Mapping Mapping
+        public tgMapping Mapping
         {
             get
             {
@@ -2104,19 +1954,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class Mapping
+    public partial class tgMapping
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EntityContainerMapping entityContainerMappingField;
+        private tgEntityContainerMapping entityContainerMappingField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string spaceField;
 
         /// <remarks/>
-        public EntityContainerMapping EntityContainerMapping
+        public tgEntityContainerMapping EntityContainerMapping
         {
             get
             {
@@ -2146,16 +1996,16 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class EntityContainerMapping
+    public partial class tgEntityContainerMapping
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EntitySetMapping[] entitySetMappingField;
+        private tgEntitySetMapping[] entitySetMappingField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private AssociationSetMapping[] associationSetMappingField;
+        private tgAssociationSetMapping[] associationSetMappingField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string storageEntityContainerField;
@@ -2165,7 +2015,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntitySetMapping")]
-        public EntitySetMapping[] EntitySetMappings
+        public tgEntitySetMapping[] EntitySetMappings
         {
             get
             {
@@ -2179,7 +2029,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("AssociationSetMapping")]
-        public AssociationSetMapping[] AssociationSetMappings
+        public tgAssociationSetMapping[] AssociationSetMappings
         {
             get
             {
@@ -2223,19 +2073,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class EntitySetMapping
+    public partial class tgEntitySetMapping
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EntityTypeMapping entityTypeMappingField;
+        private tgEntityTypeMapping entityTypeMappingField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
-        public EntityTypeMapping EntityTypeMapping
+        public tgEntityTypeMapping EntityTypeMapping
         {
             get
             {
@@ -2265,19 +2115,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class EntityTypeMapping
+    public partial class tgEntityTypeMapping
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private MappingFragment mappingFragmentField;
+        private tgMappingFragment mappingFragmentField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string typeNameField;
 
         /// <remarks/>
-        public MappingFragment MappingFragment
+        public tgMappingFragment MappingFragment
         {
             get
             {
@@ -2307,20 +2157,20 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class MappingFragment
+    public partial class tgMappingFragment
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ScalarProperty[] scalarPropertyField;
+        private tgScalarProperty[] scalarPropertyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string storeEntitySetField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ScalarProperty")]
-        public ScalarProperty[] ScalarProperties
+        public tgScalarProperty[] ScalarProperties
         {
             get
             {
@@ -2350,10 +2200,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class ScalarProperty
+    public partial class tgScalarProperty
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -2393,13 +2243,13 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class AssociationSetMapping
+    public partial class tgAssociationSetMapping
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private EndProperty[] endPropertyField;
+        private tgEndProperty[] endPropertyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -2412,7 +2262,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EndProperty")]
-        public EndProperty[] EndProperties
+        public tgEndProperty[] EndProperties
         {
             get
             {
@@ -2470,19 +2320,19 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/09/mapping/cs")]
-    public partial class EndProperty
+    public partial class tgEndProperty
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private ScalarProperty scalarPropertyField;
+        private tgScalarProperty scalarPropertyField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
-        public ScalarProperty ScalarProperty
+        public tgScalarProperty ScalarProperty
         {
             get
             {
@@ -2512,22 +2362,22 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class Designer
+    public partial class tgDesigner
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerConnection connectionField;
+        private tgDesignerConnection connectionField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerOptions optionsField;
+        private tgDesignerOptions optionsField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerDiagrams diagramsField;
+        private tgDesignerDiagrams diagramsField;
 
         /// <remarks/>
-        public DesignerConnection Connection
+        public tgDesignerConnection Connection
         {
             get
             {
@@ -2540,7 +2390,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public DesignerOptions Options
+        public tgDesignerOptions Options
         {
             get
             {
@@ -2553,7 +2403,7 @@ namespace TiraggoEdmx_v2
         }
 
         /// <remarks/>
-        public DesignerDiagrams Diagrams
+        public tgDesignerDiagrams Diagrams
         {
             get
             {
@@ -2569,16 +2419,16 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerConnection
+    public partial class tgDesignerConnection
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerInfoPropertySet designerInfoPropertySetField;
+        private tgDesignerInfoPropertySet designerInfoPropertySetField;
 
         /// <remarks/>
-        public DesignerInfoPropertySet DesignerInfoPropertySet
+        public tgDesignerInfoPropertySet DesignerInfoPropertySet
         {
             get
             {
@@ -2594,16 +2444,16 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerInfoPropertySet
+    public partial class tgDesignerInfoPropertySet
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerProperty designerPropertyField;
+        private tgDesignerProperty designerPropertyField;
 
         /// <remarks/>
-        public DesignerProperty DesignerProperty
+        public tgDesignerProperty DesignerProperty
         {
             get
             {
@@ -2619,10 +2469,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerProperty
+    public partial class tgDesignerProperty
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -2662,17 +2512,17 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerOptions
+    public partial class tgDesignerOptions
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerOptionProperty[] designerInfoPropertySetField;
+        private tgDesignerOptionProperty[] designerInfoPropertySetField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("DesignerProperty", IsNullable = false)]
-        public DesignerOptionProperty[] DesignerInfoPropertySets
+        public tgDesignerOptionProperty[] DesignerInfoPropertySets
         {
             get
             {
@@ -2688,10 +2538,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerOptionProperty
+    public partial class tgDesignerOptionProperty
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
@@ -2731,16 +2581,16 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerDiagrams
+    public partial class tgDesignerDiagrams
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerDiagram diagramField;
+        private tgDesignerDiagram diagramField;
 
         /// <remarks/>
-        public DesignerDiagram Diagram
+        public tgDesignerDiagram Diagram
         {
             get
             {
@@ -2756,23 +2606,23 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerDiagram
+    public partial class tgDesignerDiagram
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerDiagramShape[] entityTypeShapeField;
+        private tgDesignerDiagramShape[] entityTypeShapeField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerDiagramAssociationConnector[] associationConnectorField;
+        private tgDesignerDiagramAssociationConnector[] associationConnectorField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string nameField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EntityTypeShape")]
-        public DesignerDiagramShape[] EntityTypeShapes
+        public tgDesignerDiagramShape[] EntityTypeShapes
         {
             get
             {
@@ -2786,7 +2636,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("AssociationConnector")]
-        public DesignerDiagramAssociationConnector[] AssociationConnectors
+        public tgDesignerDiagramAssociationConnector[] AssociationConnectors
         {
             get
             {
@@ -2816,10 +2666,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerDiagramShape
+    public partial class tgDesignerDiagramShape
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string entityTypeField;
@@ -2927,13 +2777,13 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerDiagramAssociationConnector
+    public partial class tgDesignerDiagramAssociationConnector
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private DesignerDiagramAssociationConnectorPoint[] connectorPointField;
+        private tgDesignerDiagramAssociationConnectorPoint[] connectorPointField;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string associationField;
@@ -2943,7 +2793,7 @@ namespace TiraggoEdmx_v2
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ConnectorPoint")]
-        public DesignerDiagramAssociationConnectorPoint[] ConnectorPoints
+        public tgDesignerDiagramAssociationConnectorPoint[] ConnectorPoints
         {
             get
             {
@@ -2987,10 +2837,10 @@ namespace TiraggoEdmx_v2
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.18060")]
 
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/ado/2008/10/edmx")]
-    public partial class DesignerDiagramAssociationConnectorPoint
+    public partial class tgDesignerDiagramAssociationConnectorPoint
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private decimal pointXField;

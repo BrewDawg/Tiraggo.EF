@@ -8,41 +8,41 @@ using System.Xml.Serialization;
 
 namespace TiraggoEdmx_v2
 {
-	public partial class ConceptualSchema
+	public partial class tgConceptualSchema
 	{
-		public static ConceptualSchema DeserializeFrom(Stream stream)
+		public static tgConceptualSchema DeserializeFrom(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
-			return (ConceptualSchema)serializer.Deserialize(stream);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgConceptualSchema));
+			return (tgConceptualSchema)serializer.Deserialize(stream);
 		}
 
-		public static ConceptualSchema DeserializeFrom(TextReader reader)
+		public static tgConceptualSchema DeserializeFrom(TextReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
-			return (ConceptualSchema)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgConceptualSchema));
+			return (tgConceptualSchema)serializer.Deserialize(reader);
 		}
 
-		public static ConceptualSchema DeserializeFrom(XmlReader reader)
+		public static tgConceptualSchema DeserializeFrom(XmlReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
-			return (ConceptualSchema)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgConceptualSchema));
+			return (tgConceptualSchema)serializer.Deserialize(reader);
 		}
 
 		public void SerializeTo(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgConceptualSchema));
 			serializer.Serialize(stream, this);
 		}
 
 		public void SerializeTo(TextWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgConceptualSchema));
 			serializer.Serialize(writer, this);
 		}
 
 		public void SerializeTo(XmlWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(ConceptualSchema));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgConceptualSchema));
 			serializer.Serialize(writer, this);
 		}
 	}

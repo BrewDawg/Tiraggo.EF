@@ -8,41 +8,41 @@ using System.Xml.Serialization;
 
 namespace TiraggoEdmx_v3
 {
-	public partial class Schema
+	public partial class tgSchema
 	{
-		public static Schema DeserializeFrom(Stream stream)
+		public static tgSchema DeserializeFrom(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema));
-			return (Schema)serializer.Deserialize(stream);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgSchema));
+			return (tgSchema)serializer.Deserialize(stream);
 		}
 
-		public static Schema DeserializeFrom(TextReader reader)
+		public static tgSchema DeserializeFrom(TextReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema));
-			return (Schema)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgSchema));
+			return (tgSchema)serializer.Deserialize(reader);
 		}
 
-		public static Schema DeserializeFrom(XmlReader reader)
+		public static tgSchema DeserializeFrom(XmlReader reader)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema));
-			return (Schema)serializer.Deserialize(reader);
+			XmlSerializer serializer = new XmlSerializer(typeof(tgSchema));
+			return (tgSchema)serializer.Deserialize(reader);
 		}
 
 		public void SerializeTo(Stream stream)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgSchema));
 			serializer.Serialize(stream, this);
 		}
 
 		public void SerializeTo(TextWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgSchema));
 			serializer.Serialize(writer, this);
 		}
 
 		public void SerializeTo(XmlWriter writer)
 		{
-			XmlSerializer serializer = new XmlSerializer(typeof(Schema));
+			XmlSerializer serializer = new XmlSerializer(typeof(tgSchema));
 			serializer.Serialize(writer, this);
 		}
 	}
