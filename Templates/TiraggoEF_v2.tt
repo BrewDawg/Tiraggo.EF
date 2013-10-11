@@ -9,7 +9,7 @@
 Tiraggo.EF Copyright © Mike Griffin 2013
 ========================================================
 
-See : https://github.com/BrewDawg/Tiraggo.EF
+See : http://brewdawg.github.io/Tiraggo.EF/
 
 ** NOTE **
 1) Place the "TiraggoEF.tt" template in your Models folder
@@ -39,12 +39,12 @@ using (NorthwindEntities context = new NorthwindEntities())
 	// ******************************************
 	// *** CHANGE THIS TO YOUR EDMX FILE NAME ***
 	// ******************************************
-	string edxmFileName = @"Model1.edmx";
+	string edxmFileName = @"Models1.edmx";
 
     string inputFile = edxmFileName;
     string inputPath = path + "\\" + edxmFileName;
 
-     Edmx edmx = null;
+    Edmx edmx = null;
 
     try
     {
@@ -120,7 +120,7 @@ using Tiraggo.DynamicQuery;
         {
             string physicalName = info.ColumnMappings[prop.Name];
 #>
-                meta.Types[ColumnNames.<#=prop.Name#>] = new tgTypeMap("<#=info.ColumnSQL[physicalName].Type#>", "System.<#=info.ColumnCLR[prop.Name].Type#>");
+                meta.Types[ColumnNames.<#=prop.Name#>] = new tgTypeMap("<#=info.ColumnSQL[physicalName].Type#>", "<#=info.ColumnCLR[prop.Name].Type#>");
 <#
         }
 #>
@@ -133,7 +133,7 @@ using Tiraggo.DynamicQuery;
         {
             string physicalName = info.ColumnMappings[prop.Name];
 #>
-                c = new tgColumnMetadata(ColumnNames.<#=prop.Name#>, <#=ordinal++.ToString()#>, typeof(System.<#=info.ColumnCLR[prop.Name].Type#>), tgSystemType.<#=Get_tgSystemType(info.ColumnCLR[prop.Name].Type)#>);
+                c = new tgColumnMetadata(ColumnNames.<#=prop.Name#>, <#=ordinal++.ToString()#>, typeof(<#=info.ColumnCLR[prop.Name].Type#>), tgSystemType.<#=Get_tgSystemType(info.ColumnCLR[prop.Name].Type)#>);
                 c.PropertyName = PropertyNames.<#=prop.Name#>;
 <#
             if(info.IsInPrimaryKey(prop.Name))
@@ -244,7 +244,50 @@ public void EndNamespace(CodeGenerationTools code)
 <#+ 
 public string Get_tgSystemType(string type)
 {
-    return type.Replace("[]", "Array");
+	switch(type)
+    {
+		case "short[]":
+			return "Int16Array";
+
+		case "ushort[]":
+			return "UInt16Array";
+
+		case "int[]":
+			return "Int32Array";
+
+		case "uint[]":
+			return "UInt32Array";
+
+		case "long[]":
+			return "Int64Array";
+
+		case "ulong[]":
+			return "UInt64Array";
+
+		case "bool[]":
+			return "BooleanArray";
+
+		case "byte[]":
+			return "ByteArray";
+
+		case "sbyte[]":
+			return "SByteArray";
+
+		case "char[]":
+			return "CharArray";
+
+		case "double[]":
+			return "DoubleArray";
+
+		case "float[]":
+			return "SingleArray";
+
+		case "decimal[]":
+			return "DecimalArray";
+
+		default:
+			return type;
+    }
 }
 #>
 <#+ 
