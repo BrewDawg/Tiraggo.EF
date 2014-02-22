@@ -125,7 +125,8 @@ Mikes <a href="https://twitter.com/TheBrewDawg">Twitter Account</a></p>
   <span class="n">ErrorLog</span><span class="p">[]</span> <span class="n">array</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToArray</span><span class="p">&lt;</span><span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
 
   <span class="c1">// Dictionary where "Key" is the Primary Key</span>
-  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;</span> <span class="n">dict</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToDictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
+  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;</span> <span class="n">dict</span> <span class="p">=</span> 
+          <span class="n">q</span><span class="p">.</span><span class="n">ToDictionary</span><span class="p">&lt;</span><span class="n">Guid</span><span class="p">,</span> <span class="n">ErrorLog</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
 
   <span class="c1">// Anonymous - useful when bringing back extra columns in a join </span>
   <span class="kt">var</span> <span class="n">anonymous</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToAnonymousType</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
@@ -135,6 +136,13 @@ Mikes <a href="https://twitter.com/TheBrewDawg">Twitter Account</a></p>
 
 <h1>
 <a name="how-does-it-work" class="anchor" href="#how-does-it-work"><span class="octicon octicon-link"></span></a>How does it work</h1>
+
+<p>A reference to "Tiraggo.DynamicQuery.EF.dll" will be added to your solution as a reference. This is the only assembly your application will to use at runtime to use your Tiraggo.EF query classes.</p>
+
+<p>There are two ways you can generate your Tiraggo.EF query classes, from your EDMX files or from your database schema.</p>
+
+<h2>
+<a name="1-using-edmx-files-as-input" class="anchor" href="#1-using-edmx-files-as-input"><span class="octicon octicon-link"></span></a>1) Using EDMX Files as Input</h2>
 
 <p>When you install the Tiraggo.EF NuGet package it will install two T4 templates into your Visual Studio solution. Both will run successfully but only one will generate code depending on whether you have V2 or V3 EDMX files. The templates will be installed in your Models folder. </p>
 
@@ -164,11 +172,12 @@ Mikes <a href="https://twitter.com/TheBrewDawg">Twitter Account</a></p>
 
 <p><b>Tiraggo.EF Assemblies</b></p>
 
-<p>A reference to "Tiraggo.DynamicQuery.EF.dll" will be added to your solution as a reference. This is the only assembly your application will to use at runtime to use your Tiraggo.EF query classes.</p>
-
 <p>There is also a "TiraggoEdmx.EF.dll" assembly added to a folder in your project named "TiraggoEdmx". This assembly is used by the Tiraggo.EF T4 templates and you do not need to ship this assembly. This assembly provides the low level metadata that Microsoft EDMX API refuses to serve up. For example, the mappings between your conceptual model and the storage model including primitive information such as low level SQL Server columns types like "nvarchar". I am making some enhancements in the assembly and will release "TiraggoEdmx" as a separate NuGet package on it's own. TiraggoEdmx is a far superior way to write T4 templates against EDMX files, everything is fully exposed.</p>
 
-<p>You can see a sample of it <a href="https://github.com/BrewDawg/Tiraggo.EF/blob/master/TiraggoEdmx/TiraggoEntityInfo_v3.cs">HERE</a>. Again, I am making big improvements to this and will release in about two weeks so wait for that release if you're interested.</p>
+<h2>
+<a name="2-database-schema-as-input" class="anchor" href="#2-database-schema-as-input"><span class="octicon octicon-link"></span></a>2) Database Schema as Input</h2>
+
+<p>If you are using code first you will not have .EDMX files. There is a template that you can run on <a href="https://www.my2ndgeneration.com">My2ndGeneration</a> that will generate the same query classes in seconds. It's in the Tiraggo.EntityFramework namespaces. You can use the Cloud or Desktop version of My2ndGeneration</p>
 
 <h1>
 <a name="back-to-the-syntax" class="anchor" href="#back-to-the-syntax"><span class="octicon octicon-link"></span></a>Back to the Syntax</h1>
@@ -437,7 +446,7 @@ Mikes <a href="https://twitter.com/TheBrewDawg">Twitter Account</a></p>
 <span class="k">FROM</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="k">Order</span><span class="p">]</span> <span class="n">o</span>
 </pre></div>
 
-<p>This is the same as the query above, but returns all columns in the Order table, instead of just OrderID and OrderDate. Notice that the Select clause contains orders, not orders.*. The SQL produced will use the supplied alias o.*.</p>
+<p>This is the same as the query above, but returns all columns in the Order table, instead of just OrderID and OrderDate. Notice that the Select clause contains orders, not orders.<em>. The SQL produced will use the supplied alias o.</em>.</p>
 
 <div class="highlight highlight-csharp"><pre><span class="n">OrderQuery</span> <span class="n">orders</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OrderQuery</span><span class="p">(</span><span class="s">"o"</span><span class="p">);</span>
 <span class="n">OrderItemQuery</span> <span class="n">details</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OrderItemQuery</span><span class="p">(</span><span class="s">"oi"</span><span class="p">);</span>
