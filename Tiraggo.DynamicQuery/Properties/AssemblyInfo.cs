@@ -44,13 +44,9 @@ using System.Security;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Tiraggo Architecture")]
-[assembly: AssemblyCopyright("Copyright © Mike Griffin - 2013")]
+[assembly: AssemblyCopyright("Copyright © Mike Griffin - 2013, 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-[assembly: InternalsVisibleTo("System.Runtime.Serialization, PublicKey=00240000048000009400000006020000002400005253413100040000010001008d56c76f9e8649383049f383c44be0ec204181822a6c31cf5eb7ef486944d032188ea1d3920763712ccb12d75fb77e9811149e6148e5d32fbaab37611c1878ddc19e20ef135d0cb2cff2bfec3d115810c3d9069638fe4be215dbf795861920e5ab6f7db2e2ceef136ac23d5dd2bf031700aec232f6c6b1c785b4305c123b37ab")]
-//[assembly: InternalsVisibleTo("SilverlightDeserializerNonPublicProps", AllInternalsVisible = true)]
-
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM componenets.  If you need to access a type in this assembly from 
@@ -69,5 +65,5 @@ using System.Security;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2013.1.0913.0")]
-[assembly: AssemblyFileVersion("2013.1.0913.0")]
+[assembly: AssemblyVersion("2014.1.0223.0")]
+[assembly: AssemblyFileVersion("2014.1.0223.0")]
