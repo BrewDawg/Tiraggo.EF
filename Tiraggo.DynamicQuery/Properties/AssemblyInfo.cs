@@ -39,7 +39,6 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Tiraggo.DynamicQuery")]
-[assembly: AllowPartiallyTrustedCallers]
 [assembly: AssemblyDescription("The Serializable Portion of the DynamicQuery")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]

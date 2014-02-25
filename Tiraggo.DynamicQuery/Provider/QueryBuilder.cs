@@ -1173,18 +1173,8 @@ namespace Tiraggo.DynamicQuery
                 {
                     da.SelectCommand = cmd;
 
-                    if (context.Database.Connection.State == ConnectionState.Open)
-                    {
-                        cmd.Connection = context.Database.Connection;
-                        da.Fill(dataTable);
-                    }
-                    else
-                    {
-                        using (cmd.Connection = new SqlConnection(context.Database.Connection.ConnectionString))
-                        {
-                            da.Fill(dataTable);
-                        }
-                    }
+                    cmd.Connection = context.Database.Connection;
+                    da.Fill(dataTable);
                 }
             }
 
