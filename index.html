@@ -112,6 +112,8 @@ Mikes <a href="https://twitter.com/TheBrewDawg">Twitter Account</a></p>
 <li>ToArray</li>
 <li>ToDictionary - Primary key is the "Key" value</li>
 <li>ToAnonymousType</li>
+<li>ToScalar</li>
+<li>ToFirstOrDefault</li>
 </ul><div class="highlight highlight-csharp"><pre><span class="n">ErrorLogQuery</span> <span class="n">q</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ErrorLogQuery</span><span class="p">();</span>
 <span class="n">q</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">ErrorLogId</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">Method</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
 <span class="n">q</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">DateOccurred</span><span class="p">.</span><span class="n">Descending</span><span class="p">);</span>
@@ -276,7 +278,7 @@ Mikes <a href="https://twitter.com/TheBrewDawg">Twitter Account</a></p>
 
 <span class="k">using</span> <span class="p">(</span><span class="n">MyEntities</span> <span class="n">context</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyEntities</span> <span class="p">())</span>
 <span class="p">{</span>
-    <span class="kt">long</span> <span class="n">count</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ExecuteScalar</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="n">count</span> <span class="p">=</span> <span class="n">q</span><span class="p">.</span><span class="n">ToScalar</span><span class="p">&lt;</span><span class="kt">long</span><span class="p">&gt;(</span><span class="n">context</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
