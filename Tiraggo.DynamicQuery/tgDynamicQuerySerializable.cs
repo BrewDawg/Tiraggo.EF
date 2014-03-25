@@ -27,7 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -------------------------------------------------------------------------------
 */
 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,10 +36,9 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
-using System.Data;
-using System.Data.Entity;
 using System.Dynamic;
-using System.Data.Objects;
+using System.Data.Entity;
+using System.Data;
 
 
 namespace Tiraggo.DynamicQuery
@@ -1147,32 +1145,11 @@ namespace Tiraggo.DynamicQuery
         }
 
         /// <summary>
-        /// Returns the query results as a generic list of type T
-        /// </summary>
-        /// <typeparam name="T">The POCO class type</typeparam>
-        /// <param name="context">The Entity Framework DbContext</param>
-        /// <returns>The query results as a generic list of type T</returns>
-        public List<T> ToList<T>(ObjectContext context) where T : class, new()
-        {
-            return QueryBuilder.ToList<T>(this, context);
-        }
-
-        /// <summary>
         /// This actually returns Dynamic data, use the new { } syntax, but there won't be intellisense
         /// </summary>
         /// <param name="context">The Entity Framework DbContext</param>
         /// <returns></returns>
         public List<dynamic> ToAnonymousType(DbContext context)
-        {
-            return QueryBuilder.ToAnonymousType(this, context);
-        }
-
-        /// <summary>
-        /// This actually returns Dynamic data, use the new { } syntax, but there won't be intellisense
-        /// </summary>
-        /// <param name="context">The Entity Framework DbContext</param>
-        /// <returns></returns>
-        public List<dynamic> ToAnonymousType(ObjectContext context)
         {
             return QueryBuilder.ToAnonymousType(this, context);
         }
@@ -1189,17 +1166,6 @@ namespace Tiraggo.DynamicQuery
         }
 
         /// <summary>
-        ///  Returns the query results as an array of type T
-        /// </summary>
-        /// <typeparam name="T">The POCO class type</typeparam>
-        /// <param name="context">The Entity Framework DbContext</param>
-        /// <returns>The query results as an array of type T</returns>
-        public T[] ToArray<T>(ObjectContext context) where T : class, new()
-        {
-            return QueryBuilder.ToArray<T>(this, context);
-        }
-
-        /// <summary>
         /// Creates a Dictionary where the key is the Primary key and the value is the POCO
         /// </summary>
         /// <typeparam name="TKey">The type of the Primary, for example, Guid or int</typeparam>
@@ -1211,32 +1177,27 @@ namespace Tiraggo.DynamicQuery
             return QueryBuilder.ToDictionary<TKey, TSource>(this, context);
         }
 
+
         /// <summary>
-        /// Creates a Dictionary where the key is the Primary key and the value is the POCO
+        /// Use this to fetch a single POCO
         /// </summary>
-        /// <typeparam name="TKey">The type of the Primary, for example, Guid or int</typeparam>
-        /// <typeparam name="TSource">The POCO class type</typeparam>
+        /// <typeparam name="T">The POCO class type</typeparam>
         /// <param name="context">The Entity Framework DbContext</param>
-        /// <returns>The query results as an Dictionary</returns>
-        public Dictionary<TKey, TSource> ToDictionary<TKey, TSource>(ObjectContext context) where TSource : class, new()
+        /// <returns>The Object, NULL if not found, throws an exception of query results in more than one row</returns>
+        public T ToFirstOrDefault<T>(DbContext context) where T : class, new()
         {
-            return QueryBuilder.ToDictionary<TKey, TSource>(this, context);
+            return QueryBuilder.ToFirstOrDefault<T>(this, context);
         }
 
-        public T ExecuteScalar<T>(DbContext context)
+        /// <summary>
+        /// Fetches a single "Column" value via the Query
+        /// </summary>
+        /// <typeparam name="T">The value type return, ie, string, int, decimal ...</typeparam>
+        /// <param name="context">The Entity Framework DbContext</param>>
+        /// <returns>The single scalar value</returns>
+        public T ToScalar<T>(DbContext context)
         {
-            object val = QueryBuilder.ExecuteScalar(this, context);
-
-            Type t = typeof(T);
-            t = Nullable.GetUnderlyingType(t) ?? t;
-
-            return (val == null || DBNull.Value.Equals(val)) ?
-                default(T) : (T)Convert.ChangeType(val, t);
-        }
-
-        public T ExecuteScalar<T>(ObjectContext context)
-        {
-            object val = QueryBuilder.ExecuteScalar(this, context);
+            object val = QueryBuilder.ToScalar(this, context);
 
             Type t = typeof(T);
             t = Nullable.GetUnderlyingType(t) ?? t;

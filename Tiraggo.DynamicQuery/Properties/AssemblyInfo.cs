@@ -39,7 +39,7 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Tiraggo.DynamicQuery")]
-[assembly: AssemblyDescription("The Serializable Portion of the DynamicQuery")]
+[assembly: AssemblyDescription("The Awesome DynamicQuery API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Tiraggo Architecture")]
@@ -64,5 +64,5 @@ using System.Security;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2014.1.0223.0")]
-[assembly: AssemblyFileVersion("2014.1.0223.0")]
+[assembly: AssemblyVersion("2014.1.0322.0")]
+[assembly: AssemblyFileVersion("2014.1.0322.0")]

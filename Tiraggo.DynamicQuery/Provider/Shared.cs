@@ -29,9 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-
 using Tiraggo.DynamicQuery;
 
 namespace Tiraggo.DynamicQuery

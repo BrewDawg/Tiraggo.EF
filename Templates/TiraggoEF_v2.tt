@@ -39,7 +39,7 @@ using (NorthwindEntities context = new NorthwindEntities())
 	// ******************************************
 	// *** CHANGE THIS TO YOUR EDMX FILE NAME ***
 	// ******************************************
-	string edxmFileName = @"Models1.edmx";
+	string edxmFileName = @"Model1.edmx";
 
     string inputFile = edxmFileName;
     string inputPath = path + "\\" + edxmFileName;
